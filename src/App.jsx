@@ -1,0 +1,61 @@
+//Router
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Unprotected from "./Authorization/Unprotected"
+import Protected from "./Authorization/Protected"
+
+//Unprotected Routes
+import Login from "./pages/Login"
+import Recovery from "./pages/Recovery"
+import _404 from './pages/_404'
+
+//Protected Routes
+import Home from "./pages/Home"
+import Sports from "./pages/Sports"
+import SportDetail from "./pages/SportDetail"
+import LeagueDetail from "./pages/LeagueDetail"
+import Players from "./pages/Players"
+import PlayerDetail from "./pages/PlayerDetail"
+import Teams from "./pages/Teams"
+import TeamDetail from "./pages/TeamDetail"
+import SeasonDetail from './pages/SeasonDetail'
+import RoundDetail from "./pages/RoundDetail"
+import MatchDetail from "./pages/MatchDetail"
+
+//Zustand
+import { useAuthStore } from "./store/auth"
+
+
+const App = () => {
+  const isLogged = useAuthStore(state => state.isLogged)
+  
+ 
+  return (
+    <>
+    <BrowserRouter>
+     <Routes>
+      <Route element={<Unprotected isLogged={isLogged}></Unprotected>}>
+      <Route path="/" element={<Login />} />
+      <Route path="recovery" element={<Recovery />} />
+      <Route path="*" element={<_404 />} />
+      </Route>
+      
+      <Route element={<Protected isLogged={isLogged} />}>
+      <Route path='home'element={ <Home />} />
+      <Route path='sports' element={<Sports />} />
+      <Route path='sports/:sportId' element={<SportDetail />} />
+      <Route path='sports/:sportId/leagues/:leagueId' element={<LeagueDetail />} />
+      <Route path='players/' element={<Players />} />
+      <Route path='players/:playerId' element={<PlayerDetail />} />
+      <Route path='teams' element={<Teams/>} />
+      <Route path='teams/:teamId' element={<TeamDetail />} />
+      <Route path='sports/:sportId/leagues/:leagueId/seasons/:seasonId' element={<SeasonDetail />} />
+      <Route path='sports/:sportId/leagues/:leagueId/seasons/:seasonId/rounds/:roundId' element={<RoundDetail />} />
+      <Route path='sports/:sportId/leagues/:leagueId/seasons/:seasonId/rounds/:roundId/matches/:matchId' element={<MatchDetail />} />
+      </Route>
+     </Routes>  
+    </BrowserRouter>
+    </>
+  )
+}
+
+export default App
