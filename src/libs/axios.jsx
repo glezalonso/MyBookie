@@ -2,7 +2,7 @@ import axios from "axios"
 import { useAuthStore } from "../store/auth"
 
 const authApi = axios.create({
-    baseURL: process.env.CLIENT,
+    baseURL: import.meta.env.VITE_CLIENT_URL,
     withCredentials:true
 })
 
