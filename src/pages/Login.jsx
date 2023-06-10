@@ -37,7 +37,7 @@ const Login = () => {
         
         }
     })
-    console.log(process.env.CLIENT)
+    console.log(process.env.VITE_VERCEL_CLIENT)
 
     return(
         <>
