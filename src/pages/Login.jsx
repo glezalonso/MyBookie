@@ -37,7 +37,7 @@ const Login = () => {
         
         }
     })
-    console.log(import.meta.env.VITE_CLIENT_URL)
+    console.log(process.env.CLIENT)
 
     return(
         <>
