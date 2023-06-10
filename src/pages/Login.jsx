@@ -37,8 +37,8 @@ const Login = () => {
         
         }
     })
-    console.log(process.env)
-    console.log('dsdgsf')
+    console.log(import.meta.env)
+    console.log('jj')
 
     return(
         <>
