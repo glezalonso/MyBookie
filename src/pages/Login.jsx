@@ -37,7 +37,8 @@ const Login = () => {
         
         }
     })
-    console.log(import.meta.env.VITE_CLIENT)
+    console.log(process.env.CLIENT)
+    console.log('dsdgsf')
 
     return(
         <>
