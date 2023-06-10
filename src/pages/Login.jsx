@@ -37,8 +37,8 @@ const Login = () => {
         
         }
     })
-    console.log(import.meta.env)
-    console.log('jj')
+    console.log(import.meta.env.VITE_VERCEL_CLIENT)
+    console.log(import.meta.env.VITE_VERCEL_ENV)
 
     return(
         <>
