@@ -37,6 +37,7 @@ const Login = () => {
         
         }
     })
+    console.log(process.env.CLIENT)
 
     return(
         <>
