@@ -2,7 +2,7 @@ import axios from "axios"
 import { useAuthStore } from "../store/auth"
 
 const authApi = axios.create({
-    baseURL: import.meta.env.VITE_CLIENT_URL,
+    baseURL: "https://my-bookie-server-production.up.railway.app/",
     withCredentials:true
 })
 
