@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/auth"
 
 const authApi = axios.create({
     baseURL: "https://my-bookie-server-production.up.railway.app/",
+    withCredentials: true
 })
 
 authApi.interceptors.request.use(config => {
