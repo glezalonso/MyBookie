@@ -29,7 +29,7 @@ const MatchContent = ({match, team, setLoading, roundId}) => {
         .catch(() => toast.error('Failed remove from lineup'))
         .finally(() =>setLoading(true))
     }
-   
+   console.log(match)
     return(
         <>
          <Toaster position="botton-center" reverseOrder={false} />
