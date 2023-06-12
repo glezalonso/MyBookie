@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams} from "react-router-dom"
-import { getTeam, removePlayer} from "../models/teams.models"
+import { getTeam} from "../models/teams.models"
 import toast, { Toaster } from "react-hot-toast"
-import GridPlayers from "./components/teams/GridPlayers"
+import SectionPlayers from "./components/teams/SectionPlayers"
 import { Container, Image, Spinner, Row, Col, Button, Alert} from "react-bootstrap"
 import Navigate from "./components/static/Navigate"
+import SectionRoster from "./components/teams/SectionRoster"
 
 
 const TeamDetail = () => {
@@ -22,17 +23,11 @@ const TeamDetail = () => {
             setLoading(false)})
     },[teamId,loading])
 
-    const handleRemove = (id, playerId, player) => {
-       removePlayer(id, { playerId, player })
-       .then(()=> toast.success('Removed player successfully'))
-       .catch(() => toast.error('Failed player remove'))
-       .finally(() => setLoading(true))
-       }
-     
     if(loading) return <Spinner animation="border" />  
   
     return (
         <>
+     
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container>
@@ -43,17 +38,10 @@ const TeamDetail = () => {
             <p>Stadium: {team?.stadium}</p>
             <span> Sport: {team?.sport?.sport}</span>
             </div>
-        <Row>
-            <Col style={{border: 'solid'}} >
-            <h1 className="h1">Roaster</h1>
-            <ul>
-            {(team?.players?.length > 0 ) ? team?.players?.map(player => (
-                 <li key={player?.playerId}>{player?.player}<Button variant="danger" onClick={() => handleRemove(teamId, player?.playerId, player?.player)} >Remove</Button></li>
-             )):<Alert variant="info">There is no information to show!</Alert>}
-             </ul>
-            </Col>
-             <GridPlayers teamId={teamId} setLoading={setLoading} team={team} />
-            </Row>
+                <Row>
+                    <SectionRoster  team={team} setLoading={setLoading}/>
+                    <SectionPlayers team={team} setLoading={setLoading} />
+                </Row>
             </Container>
         </>
     )

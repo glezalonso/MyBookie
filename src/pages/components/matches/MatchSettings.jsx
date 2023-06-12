@@ -27,7 +27,7 @@ const MatchSettings = ({team, match , handleRemoveLineUp , handleAddLineUp}) => 
             <div>
             <h3 className="h3">{team?.local?.name} <strong>{team?.local?.stadium}</strong> <span>{match?.score[0]?.local}</span></h3>
             <div style={{ border: 'solid'}}>
-                <h6 className="h6">Alineación</h6>
+                <h6 className="h6">Lineup</h6>
                 {match?.lineup?.map(local => local?.local?.map(player => (
                 <li key={player?.playerId}>{player?.player}<Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remover</Button></li>
 

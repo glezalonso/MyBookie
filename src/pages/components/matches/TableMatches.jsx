@@ -28,7 +28,9 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
     }
 
     const matchesByRound = matches?.filter( match => match?.round?._id == roundId) 
-        
+    const local = matchesByRound?.map(score =>score?.score?.map(local => local?.local))
+    const away = matchesByRound?.map(score => score?.score?.map(away => away?.away))
+ 
    return(
         <>
         <Button className="btn btn-warning" onClick={handleShow} >Create match</Button> 
@@ -53,7 +55,7 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
          <td>{match?.round?.round}</td>
          <td>{(match?.status) ? 'Abierto' : 'Cerrado'}</td>
          {match?.teams?.map(team =>(
-            <td key={team?._id} >{team?.local?.name} vs {team?.away?.name}</td>
+            <td key={team?._id} >{team?.local?.name}<strong> {local}</strong> vs {team?.away?.name}<strong> {away}</strong></td>
          ))}
 
          <td>

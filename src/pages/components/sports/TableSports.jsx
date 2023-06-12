@@ -46,7 +46,7 @@ const TableSports = ({ sports, setLoading } ) => {
          <td>{sport?.sport}</td>
          <td>{sport?.description}</td>
          <td>
-        <Link  className="btn btn-secondary" to={`/sports/${sport?._id}`}>Details</Link>
+        <Link  className="btn btn-dark" to={`/sports/${sport?._id}`}>Details</Link>
          <Button variant="warning" onClick={() => handleUpdate(sport)}>Edit</Button>
          <Button variant="danger" onClick={() => handleDelete(sport?._id)}>Delete</Button></td>
         </tr>

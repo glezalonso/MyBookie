@@ -4,7 +4,7 @@ import { addPlayer } from "../../../models/teams.models"
 import toast from 'react-hot-toast'
 import { Col, Button } from "react-bootstrap"
 
-const GridPlayers = ({teamId , team, setLoading}) => {
+const SectionPlayers = ({team, setLoading}) => {
     const [players, setPlayers] = useState([])
  
     useEffect(() =>{
@@ -31,7 +31,7 @@ const GridPlayers = ({teamId , team, setLoading}) => {
         <Col style={{border: 'solid'}}>
             <h1 className="h4">All players</h1>
             { playerBySport?.map(player => (
-                <li key={player?._id}>{player?.fullName} <Button variant="primary" onClick={()=>handleAdd(teamId, player._id, player?.fullName)}>Add</Button></li>
+                <li key={player?._id}>{player?.fullName} <Button variant="primary" onClick={()=>handleAdd(team?._id, player?._id, player?.fullName)}>Add</Button></li>
             ))}
            
         </Col >
@@ -39,4 +39,4 @@ const GridPlayers = ({teamId , team, setLoading}) => {
     )
 }
 
-export default GridPlayers
+export default SectionPlayers
