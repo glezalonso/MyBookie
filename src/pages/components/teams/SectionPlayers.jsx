@@ -26,6 +26,7 @@ const SectionPlayers = ({team, setLoading}) => {
     }
 
     const playerBySport = players?.filter(player => player?.sport?._id == team?.sport?._id)
+   
     return(
         <>
         <Col style={{border: 'solid'}}>

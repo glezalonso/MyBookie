@@ -43,16 +43,17 @@ const Login = () => {
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
        <Container >
+            <h1>Mi Bookie</h1>
             <Form onSubmit={formik.handleSubmit}>
             <Form.Group>
             <Form.Label htmlFor="username">User</Form.Label>
-            <Form.Control {...formik.getFieldProps('username')} type="text" name="username" id="username" />
+            <Form.Control  {...formik.getFieldProps('username')} type="text" name="username" id="username" />
             </Form.Group>
             <Form.Group>
             <Form.Label htmlFor="password" >Password</Form.Label>
             <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" />
             </Form.Group>
-            <Button variant="primary" type='submit'>Log in</Button>
+            <Button variant="warning" type='submit'>Log in</Button>
             </Form>
         </Container>
        </>

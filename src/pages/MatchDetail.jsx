@@ -30,10 +30,8 @@ const MatchDetail = () => {
         <Container>
             <h1 className="h1">Match </h1>
                   <div>
-            {match?.teams?.map(team => (
-               <MatchContent key={matchId} match={match} team={team} setLoading={setLoading} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId}/>
-           ) )} 
-                
+               <MatchContent key={matchId} match={match}  setLoading={setLoading} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId}/>
+          
             </div>
         </Container>
         </>

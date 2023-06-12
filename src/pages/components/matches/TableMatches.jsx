@@ -28,9 +28,7 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
     }
 
     const matchesByRound = matches?.filter( match => match?.round?._id == roundId) 
-    const local = matchesByRound?.map(score =>score?.score?.map(local => local?.local))
-    const away = matchesByRound?.map(score => score?.score?.map(away => away?.away))
- 
+
    return(
         <>
         <Button className="btn btn-warning" onClick={handleShow} >Create match</Button> 
@@ -54,10 +52,7 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
          <td>{match?.date?.split('T')[0]}</td>
          <td>{match?.round?.round}</td>
          <td>{(match?.status) ? 'Abierto' : 'Cerrado'}</td>
-         {match?.teams?.map(team =>(
-            <td key={team?._id} >{team?.local?.name}<strong> {local}</strong> vs {team?.away?.name}<strong> {away}</strong></td>
-         ))}
-
+         <td>{match?.local?.name}<strong> {match?.score?.map(score => score?.local)}</strong> vs {match?.away.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
          <td>
          <Link className="btn btn-dark" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${seasonId}/rounds/${roundId}/matches/${match?._id}`}>Details</Link>
         <Button variant="warning" onClick={() => handleUpdate(match)}>Edit</Button>

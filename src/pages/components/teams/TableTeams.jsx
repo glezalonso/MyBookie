@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Table, Button, FormControl } from "react-bootstrap"
+import { Table, Button, FormControl, Alert } from "react-bootstrap"
 import { useState } from "react"
 import { toast } from 'react-hot-toast'
 import ModalTeams from "./ModalTeams"
@@ -49,6 +49,7 @@ const TableTeams = ({teams, setLoading}) => {
         {(!update)
         ?<ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createTeam} type={'Create'} setUpdate={setUpdate} />
         :<ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateTeam} type={'Edit'}  setUpdate={setUpdate} /> }
+         {(filter.length > 0) ? 
         <Table responsive>
         <thead>
             <tr>
@@ -73,7 +74,7 @@ const TableTeams = ({teams, setLoading}) => {
         ))}
          </tbody>
         </Table>
-       
+          : <Alert variant="info sm">There is no information to show!</Alert>} 
         </>
     )
 }

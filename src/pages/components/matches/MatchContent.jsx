@@ -6,7 +6,7 @@ import ModalScore from "./ModalScore"
 import { useState } from "react"
 
 
-const MatchContent = ({match, team, setLoading, roundId}) => {
+const MatchContent = ({match, setLoading, roundId}) => {
     
     const [ modalShow, setModalShow ]= useState(false)
 
@@ -33,13 +33,13 @@ const MatchContent = ({match, team, setLoading, roundId}) => {
     return(
         <>
          <Toaster position="botton-center" reverseOrder={false} />
-            <h3 className="h3">{match?.teams?.map(team => (
-            <span key={team?._id}><strong>{team?.local?.name}</strong> vs <strong>{team?.away?.name}</strong></span>
-            ))} <span> {(match?.status)?  <Alert variant="warning">Abierto</Alert>:<Alert variant="warning">Cerrado</Alert>}</span></h3>
+            <h3 className="h3">
+            <span key={match?._id}><strong>{match?.local?.name}</strong> vs <strong>{match?.away?.name}</strong></span>
+           <span> {(match?.status)?  <Alert variant="warning">Abierto</Alert>:<Alert variant="warning">Cerrado</Alert>}</span></h3>
             {(match?.status) && <Button variant='success' onClick={() => handleShow()}>Place score</Button> }
             <ModalScore modalShow={modalShow} handleClose={handleClose} matchId={match?._id} setLoading={setLoading}/>
             <Row>
-            {(match?.status) && <MatchSettings team={team} match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} roundId={roundId} setLoading={setLoading}/> }
+            {(match?.status) && <MatchSettings  match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} roundId={roundId} setLoading={setLoading}/> }
             </Row>
         
         </>
