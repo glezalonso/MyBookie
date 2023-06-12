@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast"
 import { validateMatch } from "../../../helpers/validations"
 
 
-const ModalMatches = ({match, modalShow, handleClose, setLoading, sportId, roundId,  action, type, setUpdate }) =>{
+const ModalMatches = ({match, modalShow, handleClose, setLoading, sportId, leagueId, seasonId, roundId,  action, type, setUpdate }) =>{
      const [ teams , setTeams ] = useState([])
    useEffect(() => {
          getTeams().then(data=> {
@@ -16,17 +16,18 @@ const ModalMatches = ({match, modalShow, handleClose, setLoading, sportId, round
             .finally(() => setLoading(false))
 
     },[setTeams,setLoading])
-    
-   const localId = match?.teams?.map(team => team?.local?._id)
-   const awayId = match?.teams?.map(team => team?.away?._id)
+
+   
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues:{
             date: match?.date?.split('T')[0] || '',
-            teamHome:localId || '',
-            teamAway:awayId || '',
-            round: roundId || '',
+            teamHome:match?.local?._id || '',
+            teamAway:match?.away?._id || '',
+            round: roundId,
+            league: leagueId,
+            season: seasonId,
             status: match?.status || ''
         },
         validate: validateMatch,

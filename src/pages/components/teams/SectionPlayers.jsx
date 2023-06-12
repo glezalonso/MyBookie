@@ -32,7 +32,7 @@ const SectionPlayers = ({team, setLoading}) => {
         <Col style={{border: 'solid'}}>
             <h1 className="h4">All players</h1>
             { playerBySport?.map(player => (
-                <li key={player?._id}>{player?.fullName} <Button variant="primary" onClick={()=>handleAdd(team?._id, player?._id, player?.fullName)}>Add</Button></li>
+            <li key={player?._id}>{player?.fullName} <Button variant="primary" onClick={()=>handleAdd(team?._id, player?._id, player?.fullName)}>Add</Button></li>
             ))}
            
         </Col >

@@ -28,18 +28,20 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
     }
 
     const matchesByRound = matches?.filter( match => match?.round?._id == roundId) 
-
+   
    return(
         <>
         <Button className="btn btn-warning" onClick={handleShow} >Create match</Button> 
          {(!update)
-        ?<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} />
-        :<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'}  setUpdate={setUpdate} sportId={sportId} roundId={roundId}/> }
+        ?<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/>
+        :<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'}  setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/> }
          {(matches.length > 0)?
          <Table responsive>
         <thead>
             <tr>
                 <th>Date</th>
+                <th>League</th>
+                <th>Season</th>
                 <th>Round</th>
                 <th>Status</th>
                 <th>Teams</th>
@@ -50,6 +52,8 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
         {matchesByRound?.map(match => (
         <tr key={match._id} >
          <td>{match?.date?.split('T')[0]}</td>
+         <td>{match?.league?.league}</td>
+         <td>{match?.season?.season}</td>
          <td>{match?.round?.round}</td>
          <td>{(match?.status) ? 'Abierto' : 'Cerrado'}</td>
          <td>{match?.local?.name}<strong> {match?.score?.map(score => score?.local)}</strong> vs {match?.away.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>

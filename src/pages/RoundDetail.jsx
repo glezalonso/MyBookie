@@ -32,7 +32,7 @@ const RoundDetail = () => {
         <Toaster position="botton-center" reverseOrder={false} />
         <Container>
         <h1 className="h1">{round?.round}<strong> {round?.league?.league}</strong></h1>
-        <RoundMatches sportId={sportId} leagueId={leagueId} seasondId={seasonId} round={round} roundId={roundId} />
+        <RoundMatches sportId={sportId} leagueId={leagueId} seasonId={seasonId} round={round} roundId={roundId} />
         </Container>
         </>
     )
