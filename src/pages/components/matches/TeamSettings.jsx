@@ -1,31 +1,39 @@
-import { Button } from "react-bootstrap"
+import { Button, Table, Alert } from "react-bootstrap"
 
 const TeamSettings = ({match, handleRemoveLineUp, type}) => {
     return (
         <>
         {(type === 'local')
          ?
-            <div>
-                <h6 className="h6">{match?.local?.name}</h6>
-                <div style={{ border: 'solid'}}>
-                <h7 className="h7">Lineup</h7>
-                {match?.lineup?.map(local => local?.local?.map(player => (
-                <li key={player?.playerId}>{player?.player}<Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remover</Button></li>
-                )))}
-                </div>
-            </div>
+            <Table responsive variant="dark" striped>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {(match?.lineup?.length > 0) ? match?.lineup?.map(local => local?.local?.map(player => (
+                <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remover</Button></td></tr>
+                ))) :<tr><td><Alert variant="info">There is no information to show!</Alert></td></tr>}
+               </tbody>
+            </Table>
 
             :
-            <div>
-                <h6 className="h6">{match?.away?.name}</h6>
-                <div style={{ border: 'solid'}}>
-                    <h7 className="h7">Lineup</h7>
-                    {match?.lineup?.map(away => away?.away?.map(player => (
-                    <li key={player?.playerId}>{player?.player}<Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'away')}>Remove from lineup</Button></li>
+            <Table responsive variant="dark" striped>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {(match?.lineup?.length > 0) ? match?.lineup?.map(away => away?.away?.map(player => (
+                    <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'away')}>Remove from lineup</Button></td></tr>
 
-                    )))}
-                </div>
-            </div>
+                    ))):<tr><td><Alert variant="info">There is no information to show!</Alert></td></tr>}
+              </tbody>
+                </Table>
              
 }
         </>

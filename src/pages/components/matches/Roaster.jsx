@@ -1,13 +1,20 @@
-import { Button } from "react-bootstrap"
-const Roaster = ( {match, roster, handleAddLineUp } ) => {
+import { Button, Table, Alert} from "react-bootstrap"
+const Roaster = ( {match, roster, handleAddLineUp, type } ) => {
     return(
         <>
-         <div style={{ border: 'solid'}}>
-                <h6 className="h6">Roster</h6>
-                {roster?.map(players=> players.players?.map(player => (
-                    <li key={player.playerId}>{player.player}<Button variant="success" onClick={() => handleAddLineUp(match?._id, player?.playerId, player?.player, 'away')}>Add to lineup</Button></li>
-                )))}
-            </div>
+        <Table  responsive variant="dark" striped>
+            <thead>
+             <tr>
+                <th>Player</th>
+                <th>Action</th>
+             </tr>
+        </thead>
+        <tbody>
+                {(roster.length > 0) ? roster?.map(players=> players.players?.map(player => (
+                    <tr key={player.playerId}><td>{player.player}</td><td><Button variant="success" onClick={() => handleAddLineUp(match?._id, player?.playerId, player?.player, type)}>Add to lineup</Button></td></tr>
+                ))):<tr><td><Alert variant="info">There is no information to show!</Alert></td></tr>}
+         </tbody>
+        </Table>
         </>
     )
 }

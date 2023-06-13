@@ -23,14 +23,22 @@ const MatchSettings = ({ match , handleRemoveLineUp , handleAddLineUp, setLoadin
  
     return (
         <>
-         <h5>Local team settings</h5>
-            <Col>
+       
+            <Col className="border border-secondary">
+            <h3><center><strong>Local team settings</strong></center></h3>
+            <br />
+            <h5 className="h5">LineUp</h5>
            <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'local'}/>
-           <Roaster match={match} roster={rostLocal} handleAddLineUp={handleAddLineUp}/>
+           <h5 className="h5">Roster</h5>
+           <Roaster match={match} roster={rostLocal} handleAddLineUp={handleAddLineUp} type={'local'}/>
             </Col>
-            <Col>
+            <Col className="border border-secondary">
+            <h3><center><strong>Away team settings</strong></center></h3>
+            <br />
+            <h5 className="h5">LineUp</h5>
             <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'away'}/>
-            <Roaster match={match} roster={rostAway} handleAddLineUp={handleAddLineUp}/>
+            <h5 className="h5">Roster</h5>
+            <Roaster match={match} roster={rostAway} handleAddLineUp={handleAddLineUp} type={'away'}/>
             </Col>
             
         </>
