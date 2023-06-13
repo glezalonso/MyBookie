@@ -51,7 +51,7 @@ const ModalRounds = ({ round ,modalShow, handleClose, setLoading, action, type, 
 
     return(
         <>
-        <Modal show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
                 <Modal.Title>{type} round</Modal.Title>
                 </Modal.Header>

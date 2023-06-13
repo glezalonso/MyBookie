@@ -59,7 +59,7 @@ const ModalPlayers = ({ player, modalShow, handleClose, setLoading, action, type
 
     return(
         <>
-        <Modal show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
                 <Modal.Title>{type} player</Modal.Title>
                 </Modal.Header>

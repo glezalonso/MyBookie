@@ -57,7 +57,7 @@ const ModalMatches = ({match, modalShow, handleClose, setLoading, sportId, leagu
     return(
         <>
       
-        <Modal show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
                 <Modal.Title>{type} match</Modal.Title>
                 </Modal.Header>

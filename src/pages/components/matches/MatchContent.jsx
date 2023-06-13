@@ -33,7 +33,7 @@ const MatchContent = ({match, setLoading, roundId}) => {
     return(
         <>
          <Toaster position="botton-center" reverseOrder={false} />
-           <Table responsive >
+           <Table responsive variant="dark" striped >
 
             <tbody>
                
@@ -51,7 +51,7 @@ const MatchContent = ({match, setLoading, roundId}) => {
              </tr>
             </tbody>
              </Table>
-            {(match?.status) && <Button variant='success' onClick={() => handleShow()}>Place score</Button> }
+            {(match?.status) && <Button variant='warnig' onClick={() => handleShow()}>Place score</Button> }
             <ModalScore modalShow={modalShow} handleClose={handleClose} matchId={match?._id} setLoading={setLoading}/>
             <Row>
             {(match?.status) && <MatchSettings  match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} roundId={roundId} setLoading={setLoading}/> }

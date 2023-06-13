@@ -35,12 +35,12 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
    
    return(
         <>
-        <Button className="btn btn-warning" onClick={handleShow} >Create match</Button> 
+        <Button className="btn btn-warning mb-2" onClick={handleShow} >Create match</Button> 
          {(!update)
         ?<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/>
         :<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'}  setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/> }
          {(matches.length > 0)?
-         <Table responsive>
+         <Table responsive variant="dark" striped>
         <thead>
             <tr>
                 <th>Date</th>
@@ -62,9 +62,9 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
          <td>{(match?.status) ? 'Abierto' : 'Cerrado'}</td>
          <td>{match?.local?.name}<strong> {match?.score?.map(score => score?.local)}</strong> vs {match?.away?.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
          <td>
-         <Link className="btn btn-dark" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${seasonId}/rounds/${roundId}/matches/${match?._id}`}>Details</Link>
-        <Button variant="warning" onClick={() => handleUpdate(match)}>Edit</Button>
-        <Button variant="danger" onClick={() => handleShowDelete(match?._id)}>Delete</Button>
+         <Link className="btn btn-info m-1" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${seasonId}/rounds/${roundId}/matches/${match?._id}`}>Details</Link>
+        <Button variant="warning m-1" onClick={() => handleUpdate(match)}>Edit</Button>
+        <Button variant="danger m-1" onClick={() => handleShowDelete(match?._id)}>Delete</Button>
          </td>
         </tr>
         ))}

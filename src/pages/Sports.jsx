@@ -25,7 +25,7 @@ const Sports = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h2 className="h2">Sport </h2>
              <TableSports  sports={sports} setLoading={setLoading} />
         </Container>

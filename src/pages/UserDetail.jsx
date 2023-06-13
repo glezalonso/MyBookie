@@ -3,21 +3,23 @@ import {getUser} from '../models/users.models'
 import { toast, Toaster } from "react-hot-toast"
 import { Spinner } from "react-bootstrap"
 import Navigate from "./components/static/Navigate"
+import { useParams } from "react-router-dom"
 
 
 const UserDetail = () => {
+    const { userId } = useParams()
     const [ user , setUser ]= useState([])
     const [ loading, setLoading]= useState(false)
 
     useEffect(() => {
-        getUser
+        getUser(userId)
         .then(data => {
             setLoading(true)
             setUser(data.data)
         })
         .catch(() => toast.error('Failed to load users'))
         .finally(() => setLoading(false))
-    },[])
+    },[loading, userId])
 
     if(loading) return <Spinner animation="border" />
    

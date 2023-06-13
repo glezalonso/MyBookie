@@ -48,16 +48,16 @@ const TablePlayers = ({ players, setLoading } ) => {
     return(
         <>
         
-        <Button variant="warning" onClick={handleShow}>Create player</Button>
+        <Button variant="warning mb-2" onClick={handleShow}>Create player</Button>
         <div>
-            <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
+            <FormControl className='mb-2' placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
         </div>
         {(!update)
         ?<ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createPlayer} type={'Create'} setUpdate={setUpdate} />
         :<ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updatePlayer} type={'Edit'}  setUpdate={setUpdate} /> }
         
         {(filter.length > 0) ?
-        <Table responsive>
+        <Table responsive variant="dark" striped>
         <thead>
             <tr>
                 <th>Fullname</th>
@@ -73,9 +73,9 @@ const TablePlayers = ({ players, setLoading } ) => {
          <td>{player?.position}</td>
          <td>{player?.sport?.sport}</td>
          <td>
-            <Link className="btn btn-dark" to={`/players/${player?._id}`}>Details</Link>
-            <Button variant="warning" onClick={() => handleUpdate(player)}>Edit</Button>
-            <Button variant="danger" onClick={() => handleShowDelete(player._id)}>Delete</Button>
+            <Link className="btn btn-info m-1" to={`/players/${player?._id}`}>Details</Link>
+            <Button variant="warning m-1" onClick={() => handleUpdate(player)}>Edit</Button>
+            <Button variant="danger m-1" onClick={() => handleShowDelete(player._id)}>Delete</Button>
             </td>
         </tr>
         ))}

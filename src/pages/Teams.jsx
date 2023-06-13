@@ -25,7 +25,7 @@ const Teams = () => {
         <>
         <Navigate></Navigate>
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h1 className="h1">Teams</h1>
             
             {(teams.length > 0)

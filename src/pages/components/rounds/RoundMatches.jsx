@@ -25,7 +25,7 @@ const RoundMatches = ({ sportId, leagueId, seasonId, roundId}) => {
     return(
         <>
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h3 className="h3">Matches</h3>
          <TableMatches  matches={matches} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId} setLoading={setLoading} />
         </Container>

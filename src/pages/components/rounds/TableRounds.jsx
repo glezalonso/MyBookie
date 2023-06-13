@@ -36,12 +36,12 @@ const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading}) => {
     
     return(
         <>
-         <Button variant="warning" onClick={handleShow}>Create round</Button>
+         <Button variant="warning mb-2" onClick={handleShow}>Create round</Button>
          {(!update)
         ?<ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createRound} type={'Create'} setUpdate={setUpdate} seasonId={seasonId} />
         :<ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateRound} type={'Edit'}  setUpdate={setUpdate} seasonId={seasonId} /> }
        {(rounds.length > 0)  ?
-        <Table>
+        <Table responsive variant="dark" striped>
             <thead>
                 <tr>
                 <th>Round</th>

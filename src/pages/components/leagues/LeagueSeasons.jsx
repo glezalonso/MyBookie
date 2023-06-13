@@ -22,7 +22,7 @@ const LeagueSeasons = ({leagueId, sportId}) => {
     return (
         <>
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h4 className="h4">Season history </h4>
             <TableSeasons  seasons={seasons} leagueId={leagueId} sportId={sportId} setLoading={setLoading}  />
         </Container>

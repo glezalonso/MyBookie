@@ -2,7 +2,7 @@ import { Modal, Button} from "react-bootstrap"
 const ModalDelete = ({ modalDelete  , handleCloseDelete, handleDelete}) => {
         return (
             <>
-              <Modal
+              <Modal className="text-dark"
         show={modalDelete.state}
         onHide={handleCloseDelete}
         backdrop="static"

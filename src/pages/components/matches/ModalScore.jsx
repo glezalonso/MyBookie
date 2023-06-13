@@ -29,7 +29,7 @@ const ModalScore = ({modalShow, handleClose, setLoading, matchId}) =>{
 
     return(
         <>
-        <Modal show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
                 <Modal.Title>Place score</Modal.Title>
                 </Modal.Header>

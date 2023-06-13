@@ -30,7 +30,7 @@ const LeagueDetail= () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container> 
+        <Container fluid className="bg-dark text-white mt-1"> 
            <h1 className="h1" ><strong>{league?.league} </strong></h1>
         </Container>  
        <LeagueSeasons leagueId={leagueId} sportId={sportId} />

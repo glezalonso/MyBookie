@@ -32,13 +32,13 @@ const TableUsers = ({ users, setLoading } ) => {
     }
     return(
         <>
-         <Button variant="warning" onClick={handleShow}> Create user</Button>
+         <Button className="btn btn-warning mb-2" onClick={handleShow}> Create user</Button>
         {(!update)
         ?<ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={register} type={'Create'} setUpdate={setUpdate} />
         :<ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateUser} type={'Edit'}  setUpdate={setUpdate} /> }
         {(users.length > 0) ? 
-        <Table responsive>
-        <thead>
+        <Table responsive variant="dark" striped>
+        <thead >
             <tr>
                 <th>Username</th>
                 <th>Email</th>
@@ -55,9 +55,9 @@ const TableUsers = ({ users, setLoading } ) => {
          <td>{user?.fullName}</td>
          <td>{(user?.isAdmin) ? <span>Admin</span> : <span>User</span>}</td>
          <td>
-        <Link  className="btn btn-dark" to={`/users/${user?._id}`}>Details</Link>
-         <Button variant="warning" onClick={() => handleUpdate(user)}>Edit</Button>
-         <Button variant="danger" onClick={() => handleShowDelete(user?._id)}>Delete</Button></td>
+        <Link  className="btn btn-info m-1" to={`/users/${user?._id}`}>Details</Link>
+         <Button variant="warning m-1" onClick={() => handleUpdate(user)}>Edit</Button>
+         <Button variant="danger m-1" onClick={() => handleShowDelete(user?._id)}>Delete</Button></td>
         </tr>
         ))}
          </tbody>

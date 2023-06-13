@@ -27,7 +27,7 @@ const MatchDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
                <MatchContent key={matchId} match={match}  setLoading={setLoading} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId}/>
         </Container>
         </>

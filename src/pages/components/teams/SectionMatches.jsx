@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getMatches } from '../../../models/matches.models'
 import { toast } from "react-hot-toast"
-import { Table} from 'react-bootstrap'
+import { Table, Alert } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 
 const SectionMatches = ({teamId, setLoading}) => {
@@ -16,13 +16,12 @@ const SectionMatches = ({teamId, setLoading}) => {
         .finally(() => setLoading(false))
     },[setLoading])
 
-    const filterMatches = matches.filter( match => match?.local?._id == teamId || match?.away?._id == teamId)
+    const filterMatches = matches?.filter( match => match?.local?._id == teamId || match?.away?._id == teamId)
    
     return( 
         <>
-        <div style={{border : "solid"}}>
         <h4>Matches</h4> 
-            <Table responsive>
+            <Table responsive variant="dark" striped border={'1'}>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -36,7 +35,7 @@ const SectionMatches = ({teamId, setLoading}) => {
                 </tr>
             </thead>
             <tbody>
-            {filterMatches?.map(match => (
+            {(filterMatches?.length > 0) ? filterMatches?.map(match => (
             <tr key={match._id} >
              <td>{match?.date?.split('T')[0]}</td>
              <td>{match?.league?.league}</td>
@@ -44,14 +43,11 @@ const SectionMatches = ({teamId, setLoading}) => {
              <td>{match?.round?.round}</td>
              <td>{(match?.status) ? 'Abierto' : 'Cerrado'}</td>
              <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong> vs {match.away.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
-            <td><Link to={`/sports/${match?.sport?._id}/leagues/${match?.league?._id}/seasons/${match?.season?._id}/rounds/${match?.round?._id}/matches/${match?._id}`}>Details</Link></td>
+            <td><Link className="btn btn-info" to={`/sports/${match?.sport?._id}/leagues/${match?.league?._id}/seasons/${match?.season?._id}/rounds/${match?.round?._id}/matches/${match?._id}`}>Details</Link></td>
             </tr>
-            ))}
+            )):<tr><td><Alert variant="info">There is no information to show!</Alert></td></tr>}
              </tbody>
             </Table>
-         
-        </div>
-        
         </>
     )
 }

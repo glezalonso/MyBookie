@@ -27,7 +27,7 @@ const PlayerDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h1 className="h1">{player?.fullName}</h1>
          </Container>
         </>

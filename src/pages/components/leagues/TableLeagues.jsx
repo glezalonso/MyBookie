@@ -37,13 +37,13 @@ const TableLeagues = ({ leagues, sportId, setLoading}) => {
 
     return(
         <>
-         <Button variant="warning" onClick={handleShow}>Create league</Button>
+         <Button variant="warning mb-2" onClick={handleShow}>Create league</Button>
         {(!update)
         ?<ModalLeagues league={league} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createLeague} type={'Create'} setUpdate={setUpdate} />
         :<ModalLeagues league={league} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateLeague} type={'Edit'}  setUpdate={setUpdate} /> }
         
         {(leagues.length >0) ?
-        <Table responsive>
+        <Table responsive variant="dark" striped>
         <thead>
             <tr>
                 <th>League</th>
@@ -59,9 +59,9 @@ const TableLeagues = ({ leagues, sportId, setLoading}) => {
          <td>{league?.description}</td>
          <td>{league?.sport?.sport}</td>
          <td> 
-        <Link  className="btn btn-dark" to={`/sports/${sportId}/leagues/${league?._id}`}>Details</Link>
-        <Button variant="warning" onClick={() => handleUpdate(league)} >Edit</Button>
-        <Button variant="danger" onClick={() => handleShowDelete(league?._id)}>Delete</Button>
+        <Link  className="btn btn-info m-1" to={`/sports/${sportId}/leagues/${league?._id}`}>Details</Link>
+        <Button variant="warning m-1" onClick={() => handleUpdate(league)} >Edit</Button>
+        <Button variant="danger m-1" onClick={() => handleShowDelete(league?._id)}>Delete</Button>
         </td>
         </tr>
         ))}

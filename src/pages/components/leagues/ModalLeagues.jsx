@@ -55,7 +55,7 @@ const ModalLeagues = ({ league, modalShow, handleClose, setLoading,  action, typ
 
     return(
         <>
-        <Modal show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal className ="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
                 <Modal.Title>{type} league</Modal.Title>
                 </Modal.Header>

@@ -32,12 +32,12 @@ const TableSports = ({ sports, setLoading } ) => {
     }
     return(
         <>
-         <Button variant="warning" onClick={handleShow}> Create sport</Button>
+         <Button variant="warning mb-2" onClick={handleShow}> Create sport</Button>
         {(!update)
         ?<ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createSport} type={'Create'} setUpdate={setUpdate} />
         :<ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateSport} type={'Edit'}  setUpdate={setUpdate} /> }
         {(sports.length > 0) ? 
-        <Table responsive>
+        <Table responsive variant="dark" striped>
         <thead>
             <tr>
                 <th>Sport</th>
@@ -51,9 +51,9 @@ const TableSports = ({ sports, setLoading } ) => {
          <td>{sport?.sport}</td>
          <td>{sport?.description}</td>
          <td>
-        <Link  className="btn btn-dark" to={`/sports/${sport?._id}`}>Details</Link>
-         <Button variant="warning" onClick={() => handleUpdate(sport)}>Edit</Button>
-         <Button variant="danger" onClick={() => handleShowDelete(sport?._id)}>Delete</Button></td>
+        <Link  className="btn btn-info m-1" to={`/sports/${sport?._id}`}>Details</Link>
+         <Button variant="warning m-1" onClick={() => handleUpdate(sport)}>Edit</Button>
+         <Button variant="danger m-1" onClick={() => handleShowDelete(sport?._id)}>Delete</Button></td>
         </tr>
         ))}
          </tbody>

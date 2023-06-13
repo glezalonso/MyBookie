@@ -27,7 +27,7 @@ const Players = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h1 className="h1">Players</h1>
             <TablePlayers players={players} setLoading={setLoading}/> 
         </Container>

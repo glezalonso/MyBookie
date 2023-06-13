@@ -29,7 +29,7 @@ const SeasonDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
         <h1 className="h1"><strong>{season?.league?.league} </strong>{season?.season}</h1>
             <SeasonRounds seasonId={seasonId} sportId={sportId} leagueId={leagueId} roundId={roundId} />
          </Container>

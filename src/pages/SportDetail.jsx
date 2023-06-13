@@ -26,7 +26,7 @@ const SportDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container >
+        <Container fluid className="bg-dark text-white mt-1" >
         <header>
         <h1 className="h1">{sport?.sport}</h1>
         </header>

@@ -31,7 +31,7 @@ const TeamDetail = () => {
      
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container className="mt-5">
+        <Container fluid className="bg-dark text-white mt-1">
             <SectionTeam team={team} />
             <SectionMatches teamId={teamId} setLoading={setLoading}/>
                 <Row>

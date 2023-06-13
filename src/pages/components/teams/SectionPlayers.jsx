@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getPlayers } from "../../../models/players.models"
 import { addPlayer } from "../../../models/teams.models"
 import toast from 'react-hot-toast'
-import { Col, Button } from "react-bootstrap"
+import { Col, Button, Table,Alert } from "react-bootstrap"
 
 const SectionPlayers = ({team, setLoading}) => {
     const [players, setPlayers] = useState([])
@@ -29,12 +29,22 @@ const SectionPlayers = ({team, setLoading}) => {
    
     return(
         <>
-        <Col style={{border: 'solid'}}>
+        <Col  className="bg-dark text-light mt-1 border border-secondary">
             <h1 className="h4">All players</h1>
-            { playerBySport?.map(player => (
-            <li key={player?._id}>{player?.fullName} <Button variant="primary" onClick={()=>handleAdd(team?._id, player?._id, player?.fullName)}>Add</Button></li>
-            ))}
-           
+            <Table responsive  variant="dark" striped>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+            {(playerBySport.length > 0) ? playerBySport?.map(player => (
+            <tr key={player?._id}><td>{player?.fullName}</td><td> <Button variant="warning" onClick={()=>handleAdd(team?._id, player?._id, player?.fullName)}>Add</Button></td></tr>
+            ))
+            :<tr><td><Alert variant="info">There is no information to show!</Alert></td></tr>}
+            </tbody>
+           </Table>
         </Col >
         </>
     )

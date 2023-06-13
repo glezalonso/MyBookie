@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getRounds } from "../../../models/round.models"
 import { toast, Toaster } from "react-hot-toast"
-import {Spinner, Container, Alert } from "react-bootstrap"
+import {Spinner, Container } from "react-bootstrap"
 import TableRounds from "../rounds/TableRounds"
 
 
@@ -23,7 +23,7 @@ const SeasonRounds = ({seasonId, sportId, leagueId, roundId}) => {
     return (
         <>
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container>
+        <Container  fluid className="bg-dark text-white mt-1">
             <h4 className="h4">Rounds</h4>
         <TableRounds rounds={rounds} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId} setLoading={setLoading}/>
         </Container>

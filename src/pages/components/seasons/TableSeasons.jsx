@@ -37,12 +37,12 @@ const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
     const seasonsBySport = seasons?.filter(season => season?.league?._id == leagueId)
     return(
         <>
-                 <Button variant="warning" onClick={handleShow}>Create season</Button>
+                 <Button variant="warning mb-2" onClick={handleShow}>Create season</Button>
                 {(!update)
                 ?<ModalSeasons season={season} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createSeason} type={'Create'} setUpdate={setUpdate} leagueId={leagueId} />
                 :<ModalSeasons season={season} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateSeason} type={'Edit'}  setUpdate={setUpdate} leagueId={leagueId} /> }
             { (seasons.length > 0) ?
-            <Table>
+            <Table responsive variant="dark" striped>
                 <thead>
                     <tr>
                         <th>Season</th>
@@ -58,9 +58,9 @@ const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
          <td>{season?.description}</td>
          <td>{season?.league?.league}</td>
          <td>
-        <Link className="btn btn-dark" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${season?._id}`}>Details</Link>
-        <Button variant="warning" onClick={() => handleUpdate(season)}>Edit</Button>
-        <Button variant="danger" onClick={() => handleShowDelete(season?._id)}>Delete</Button>
+        <Link className="btn btn-info m-1" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${season?._id}`}>Details</Link>
+        <Button variant="warning m-1" onClick={() => handleUpdate(season)}>Edit</Button>
+        <Button variant="danger m-1" onClick={() => handleShowDelete(season?._id)}>Delete</Button>
          </td>
         </tr>
         ))}
