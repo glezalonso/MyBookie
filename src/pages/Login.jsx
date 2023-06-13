@@ -21,9 +21,14 @@ const Login = () => {
         onSubmit: async (values) => {
            login(values)
            .then(res => {
+            toast.success('Log in successfully')
             auth(res.data.token)
             profile(res.data.username)
-            navigate('home')
+            setTimeout(()=> {
+                navigate('home')
+                },5000
+            )
+           
 
           })
           .catch(err => {

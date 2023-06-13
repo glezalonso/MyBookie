@@ -4,15 +4,19 @@ import { useState } from 'react'
 import { deleteMatch, updateMatch, createMatch } from '../../../models/matches.models'
 import { toast } from 'react-hot-toast'
 import ModalMatches from './ModalMatches'
+import ModalDelete from '../static/ModalDelete'
 
 
 const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoading } ) => {
     const [ modalShow, setModalShow ]= useState(false)
     const [ match, setMatch] = useState([])
     const [ update , setUpdate] = useState(false)
+    const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
+    const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
+    const handleShowDelete = (id) => setModalDelete({state: true , id:id})
 
     const handleDelete = (id) => {
         deleteMatch(id)
@@ -56,18 +60,18 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
          <td>{match?.season?.season}</td>
          <td>{match?.round?.round}</td>
          <td>{(match?.status) ? 'Abierto' : 'Cerrado'}</td>
-         <td>{match?.local?.name}<strong> {match?.score?.map(score => score?.local)}</strong> vs {match?.away.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
+         <td>{match?.local?.name}<strong> {match?.score?.map(score => score?.local)}</strong> vs {match?.away?.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
          <td>
          <Link className="btn btn-dark" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${seasonId}/rounds/${roundId}/matches/${match?._id}`}>Details</Link>
         <Button variant="warning" onClick={() => handleUpdate(match)}>Edit</Button>
-        <Button variant="danger" onClick={() => handleDelete(match?._id)}>Delete</Button>
+        <Button variant="danger" onClick={() => handleShowDelete(match?._id)}>Delete</Button>
          </td>
         </tr>
         ))}
          </tbody>
         </Table>
          :<Alert variant="info">there is no information to show!</Alert>} 
-       
+        <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
         </>
     )
 }

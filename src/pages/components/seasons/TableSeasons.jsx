@@ -4,14 +4,19 @@ import { Button, Table, Alert } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
 import { deleteSeason, createSeason, updateSeason } from '../../../models/seasons.models'
 import ModalSeasons from './ModalSeasons'
+import ModalDelete from '../static/ModalDelete'
 
 const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
     const [ modalShow, setModalShow ]= useState(false)
     const [ season, setSeason ] = useState([])
     const [ update , setUpdate] = useState(false)
+    const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
+    const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
+    const handleShowDelete = (id) => setModalDelete({state: true , id:id})
+
 
     const handleDelete = (id) => {
         deleteSeason(id)
@@ -55,13 +60,14 @@ const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
          <td>
         <Link className="btn btn-dark" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${season?._id}`}>Details</Link>
         <Button variant="warning" onClick={() => handleUpdate(season)}>Edit</Button>
-        <Button variant="danger" onClick={() => handleDelete(season?._id)}>Delete</Button>
+        <Button variant="danger" onClick={() => handleShowDelete(season?._id)}>Delete</Button>
          </td>
         </tr>
         ))}
          </tbody>
             </Table>
              : <Alert variant="info">there is no information to show!</Alert>}
+            <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
         </>
     )
 }

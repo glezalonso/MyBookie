@@ -1,12 +1,14 @@
 import {  Link  } from "react-router-dom"
 import { useNavigate} from 'react-router-dom'
 import { useAuthStore } from '../../../store/auth'
+import toast from 'react-hot-toast'
 
 const Navigate = () => {
   const logOut = useAuthStore(state=> state.logOut)
   const navigate= useNavigate()
   const handleLogOut = () =>{
       logOut()
+      toast.success('Log out successfuly')
       navigate('/')
     }
     

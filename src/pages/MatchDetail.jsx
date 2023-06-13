@@ -28,11 +28,7 @@ const MatchDetail = () => {
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container>
-            <h1 className="h1">Match </h1>
-                  <div>
                <MatchContent key={matchId} match={match}  setLoading={setLoading} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId}/>
-          
-            </div>
         </Container>
         </>
     )

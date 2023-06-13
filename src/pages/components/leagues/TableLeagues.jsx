@@ -4,15 +4,20 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { deleteLeague, createLeague, updateLeague } from '../../../models/leagues.models'
 import ModalLeagues from './ModalLeagues'
+import ModalDelete from '../static/ModalDelete'
 
 const TableLeagues = ({ leagues, sportId, setLoading}) => {
 
     const [ modalShow, setModalShow ]= useState(false)
     const [ league, setLeague] = useState([])
     const [ update , setUpdate] = useState(false)
+    const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
+    const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
+    const handleShowDelete = (id) => setModalDelete({state: true , id:id})
+
 
     const handleDelete = (id) =>{
         deleteLeague(id)
@@ -56,13 +61,14 @@ const TableLeagues = ({ leagues, sportId, setLoading}) => {
          <td> 
         <Link  className="btn btn-dark" to={`/sports/${sportId}/leagues/${league?._id}`}>Details</Link>
         <Button variant="warning" onClick={() => handleUpdate(league)} >Edit</Button>
-        <Button variant="danger" onClick={() => handleDelete(league?._id)}>Delete</Button>
+        <Button variant="danger" onClick={() => handleShowDelete(league?._id)}>Delete</Button>
         </td>
         </tr>
         ))}
          </tbody>
         </Table>  
          : <Alert variant="info">there is no information to show!</Alert>}
+          <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
         </>
     )
 }

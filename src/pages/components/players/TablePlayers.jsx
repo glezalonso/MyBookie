@@ -3,6 +3,7 @@ import { Table, Button, Alert, FormControl} from 'react-bootstrap'
 import { useState } from 'react'
 import { deletePlayer, updatePlayer, createPlayer } from '../../../models/players.models'
 import ModalPlayers from './ModalPlayers'
+import ModalDelete from '../static/ModalDelete'
 import toast from 'react-hot-toast'
 
 
@@ -11,11 +12,13 @@ const TablePlayers = ({ players, setLoading } ) => {
     const [ player, setPlayer] = useState([])
     const [ update , setUpdate] = useState(false)
     const [ dataFilter, setDataFilter] = useState('')
-
-  
+    const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
+    const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
+    const handleShowDelete = (id) => setModalDelete({state: true , id:id})
+
 
     const handleDelete = (id) => {
         deletePlayer(id)
@@ -72,13 +75,14 @@ const TablePlayers = ({ players, setLoading } ) => {
          <td>
             <Link className="btn btn-dark" to={`/players/${player?._id}`}>Details</Link>
             <Button variant="warning" onClick={() => handleUpdate(player)}>Edit</Button>
-            <Button variant="danger" onClick={() => handleDelete(player._id)}>Delete</Button>
+            <Button variant="danger" onClick={() => handleShowDelete(player._id)}>Delete</Button>
             </td>
         </tr>
         ))}
          </tbody>
         </Table>
         :<Alert variant="info">There is no information to show!</Alert>}
+        <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
         </>
     )
 }

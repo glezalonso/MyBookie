@@ -25,13 +25,12 @@ const RoundDetail = () => {
 
     if(loading) return <Spinner animation="border" />
 
-   
     return(
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container>
-        <h1 className="h1">{round?.round}<strong> {round?.league?.league}</strong></h1>
+        <h2 className="h2">{round?.season?.season}<strong>{round?.round} </strong></h2>
         <RoundMatches sportId={sportId} leagueId={leagueId} seasonId={seasonId} round={round} roundId={roundId} />
         </Container>
         </>

@@ -10,11 +10,11 @@ const Players = () => {
     const [ loading, setLoading]= useState(false)
    
     useEffect(() =>{
+       
             getPlayers()
             .then(data => {
                 setLoading(true)
-                setPlayers(data.data)
-            })
+                setPlayers(data.data)})
             .catch(() => toast.error('Failed to load players'))
             .finally(() => setLoading(false))
             
@@ -30,7 +30,7 @@ const Players = () => {
         <Container>
             <h1 className="h1">Players</h1>
             <TablePlayers players={players} setLoading={setLoading}/> 
-            </Container>
+        </Container>
         </>
     )
 }
