@@ -59,9 +59,9 @@ const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading}) => {
          <td>{round?.season?.description}</td>
          <td>{(round?.status) ? 'Open' : 'Close'}</td>
          <td>
-         <Link className="btn btn-dark" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${seasonId}/rounds/${round?._id}`}>Details</Link>
-        <Button variant="warning" onClick={() => handleUpdate(round)}>Edit</Button>
-        <Button variant="danger" onClick={() => handleShowDelete(round?._id)}>Delete</Button>
+         <Link className="btn btn-info m-1" to={`/sports/${sportId}/leagues/${leagueId}/seasons/${seasonId}/rounds/${round?._id}`}>Details</Link>
+        <Button variant="warning m-1" onClick={() => handleUpdate(round)}>Edit</Button>
+        <Button variant="danger m-1" onClick={() => handleShowDelete(round?._id)}>Delete</Button>
          </td>
         </tr>
         ))}

@@ -1,4 +1,4 @@
-import {Row, Button, Alert, Table} from "react-bootstrap"
+import {Row , Button, Alert, Table} from "react-bootstrap"
 import { addLineUp, removeLineUp } from "../../../models/matches.models"
 import toast, { Toaster} from 'react-hot-toast'
 import MatchSettings from "./MatchSettings"
@@ -33,6 +33,7 @@ const MatchContent = ({match, setLoading, roundId}) => {
     return(
         <>
          <Toaster position="botton-center" reverseOrder={false} />
+         
            <Table responsive variant="dark" striped >
 
             <tbody>
@@ -51,7 +52,7 @@ const MatchContent = ({match, setLoading, roundId}) => {
              </tr>
             </tbody>
              </Table>
-            {(match?.status) && <Button variant='warnig' onClick={() => handleShow()}>Place score</Button> }
+             <center>{(match?.status) && <Button variant='warning mb-2' onClick={() => handleShow()}>Place score</Button> }</center>
             <ModalScore modalShow={modalShow} handleClose={handleClose} matchId={match?._id} setLoading={setLoading}/>
             <Row>
             {(match?.status) && <MatchSettings  match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} roundId={roundId} setLoading={setLoading}/> }
