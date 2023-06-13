@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom"
 import { useAuthStore } from "../store/auth"
 import { Container, Form, Button } from 'react-bootstrap'
 
+
 const Login = () => {
     const auth = useAuthStore(state => state.setToken)
     const profile = useAuthStore(state=> state.setProfile)
+    const isAdmin = useAuthStore(state => state.setIsAdmin)
     const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
@@ -24,6 +26,7 @@ const Login = () => {
             toast.success('Log in successfully')
             auth(res.data.token)
             profile(res.data.username)
+            isAdmin(res.data.isAdmin)
             setTimeout(()=> {
                 navigate('home')
                 },5000

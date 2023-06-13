@@ -20,6 +20,8 @@ import TeamDetail from "./pages/TeamDetail"
 import SeasonDetail from './pages/SeasonDetail'
 import RoundDetail from "./pages/RoundDetail"
 import MatchDetail from "./pages/MatchDetail"
+import Users from "./pages/Users"
+import UserDetail from "./pages/UserDetail"
 
 //Zustand
 import { useAuthStore } from "./store/auth"
@@ -43,6 +45,8 @@ const App = () => {
       <Route path='home'element={ <Home />} />
       <Route path='sports' element={<Sports />} />
       <Route path='sports/:sportId' element={<SportDetail />} />
+      <Route path='users' element={<Users />} />
+      <Route path='users/:userId' element={<UserDetail />} />
       <Route path='sports/:sportId/leagues/:leagueId' element={<LeagueDetail />} />
       <Route path='players/' element={<Players />} />
       <Route path='players/:playerId' element={<PlayerDetail />} />

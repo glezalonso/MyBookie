@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import toast, { Toaster} from "react-hot-toast"
-import { Spinner, Alert, Container} from "react-bootstrap"
+import { Spinner, Container} from "react-bootstrap"
 import { getSports,  } from "../models/sport.models"
 import Navigate from "./components/static/Navigate"
 import TableSports from "./components/sports/TableSports"

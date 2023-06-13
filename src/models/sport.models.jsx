@@ -1,6 +1,6 @@
 import axios from "../libs/axios"
 
-export const getSports = () =>axios.get('/api/sports')
+export const getSports = () => axios.get('/api/sports')
 
 export const getSport = (id) =>  axios.get(`/api/sports/${id}`)
 

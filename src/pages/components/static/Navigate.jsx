@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 
 const Navigate = () => {
   const logOut = useAuthStore(state=> state.logOut)
+  const isAdmin = useAuthStore(state => state.isAdmin)
   const navigate= useNavigate()
   const handleLogOut = () =>{
       logOut()
@@ -34,6 +35,11 @@ const Navigate = () => {
                     <li className="nav-item">
                       <Link className="nav-link" to={'../sports'}>Sport</Link>
                     </li>
+                    {(isAdmin) ?
+                    <li className="nav-item">
+                      <Link className="nav-link" to={'../users'}>Users</Link>
+                    </li>
+                    : null}
                  
                     <li className="nav-item"><button className="btn btn-warning" onClick={() => handleLogOut()}>Log out</button></li>
                     </ul>
