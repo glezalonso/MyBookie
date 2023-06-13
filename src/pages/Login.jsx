@@ -50,9 +50,9 @@ const Login = () => {
     return(
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container >
-            <h1>Mi Bookie</h1>
-            <Form onSubmit={formik.handleSubmit}>
+       <Container className=" bg-dark ml-5 mt-5 p-5 rounded w-25 " >
+            <h1><center><strong>Mi Bookie</strong></center></h1>
+            <Form  onSubmit={formik.handleSubmit}>
             <Form.Group>
             <Form.Label htmlFor="username">User</Form.Label>
             <Form.Control  {...formik.getFieldProps('username')} type="text" name="username" id="username" />
@@ -61,7 +61,7 @@ const Login = () => {
             <Form.Label htmlFor="password" >Password</Form.Label>
             <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" />
             </Form.Group>
-            <Button variant="warning" type='submit'>Log in</Button>
+            <Button variant="warning w-100 mt-3" type='submit'>Log in</Button>
             </Form>
         </Container>
        </>
