@@ -50,7 +50,7 @@ const Login = () => {
     return(
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container className=" bg-dark ml-5 mt-5 p-5 rounded w-25 " >
+       <Container className=" bg-dark ml-5 mt-5 p-5 rounded w-75 " >
             <h1><center><strong>Mi Bookie</strong></center></h1>
             <Form  onSubmit={formik.handleSubmit}>
             <Form.Group>
