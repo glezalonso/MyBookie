@@ -7,7 +7,7 @@ import ModalDelete from '../static/ModalDelete'
 import { deleteTeam, updateTeam, createTeam } from "../../../models/teams.models"
 
 const TableTeams = ({teams, setLoading}) => {
-
+   
     const [ modalShow, setModalShow ]= useState(false)
     const [ team, setTeam ] = useState([])
     const [ update , setUpdate] = useState(false)
@@ -20,10 +20,13 @@ const TableTeams = ({teams, setLoading}) => {
     const handleShowDelete = (id) => setModalDelete({state: true , id:id})
 
     const handleDelete = (id) => {
+        setLoading(true)
         deleteTeam(id)
         .then(() => toast.success('Deteled team successfully '))
         .catch(()=> toast.error('Failed team delete'))
-        .finally(() => setLoading(true))  
+        .finally(() =>{
+            handleCloseDelete()
+            setLoading(false)})  
     }
 
     const handleUpdate = (data) => {
@@ -42,8 +45,7 @@ const TableTeams = ({teams, setLoading}) => {
        return team
         }}
         )
-     
-
+        
     return(
         <>
         <Button className="btn btn-warning mb-2" onClick={handleShow} >Create team</Button> 
@@ -81,7 +83,7 @@ const TableTeams = ({teams, setLoading}) => {
         
         </Table>
           : <Alert variant="info sm">There is no information to show!</Alert>} 
-        <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
+        <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete} />
         </>
     )
 }

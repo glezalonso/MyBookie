@@ -6,29 +6,31 @@ import ModalScore from "./ModalScore"
 import { useState } from "react"
 
 
-const MatchContent = ({match, setLoading, roundId}) => {
+const MatchContent = ({match, roundId, setLoading}) => {
     
     const [ modalShow, setModalShow ]= useState(false)
-
+ 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
     
     const handleAddLineUp = (id, playerId, player, type) =>{
-       
+       setLoading(true)
         addLineUp(id,{playerId, player, type})
         .then(() =>toast.success(`Added to lineup successfully`))
         .catch(() =>toast.error(`Failed add to lineup`))
-        .finally(() =>setLoading(true))
+        .finally(() =>setLoading(false))
        
     } 
  
     const handleRemoveLineUp = (id,playerId, player, lineId, type) => {
-        
+         setLoading(true)
          removeLineUp(id, { playerId, player, lineId, type })
         .then(()=> toast.success('Removed from lineup successfully'))
         .catch(() => toast.error('Failed remove from lineup'))
-        .finally(() =>setLoading(true))
+        .finally(() => setLoading(false))
     }
+
+ 
   
     return(
         <>
@@ -53,7 +55,7 @@ const MatchContent = ({match, setLoading, roundId}) => {
             </tbody>
              </Table>
              <center>{(match?.status) && <Button variant='warning mb-2' onClick={() => handleShow()}>Place score</Button> }</center>
-            <ModalScore modalShow={modalShow} handleClose={handleClose} matchId={match?._id} setLoading={setLoading}/>
+            <ModalScore modalShow={modalShow} handleClose={handleClose} matchId={match?._id} setLoading={setLoading} />
             <Row>
             {(match?.status) && <MatchSettings  match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} roundId={roundId} setLoading={setLoading}/> }
             </Row>

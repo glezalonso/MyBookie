@@ -15,14 +15,10 @@ const LeagueDetail= () => {
    
     useEffect(() =>{
         getLeague(leagueId)
-        .then(data=> {
-            setLoading(true)
-            setLeague(data.data)
-        })
+        .then(data=> setLeague(data.data))
         .catch(()=> toast.error('Failed to load league'))
         .finally(()=> setLoading(false))
     },[loading, leagueId])
-
 
     if(loading) return <Spinner animation="border" />
     
@@ -32,7 +28,7 @@ const LeagueDetail= () => {
         <Toaster position="botton-center" reverseOrder={false} />
         <Container fluid className="bg-dark text-white mt-1"> 
            <h1 className="h1" ><strong>{league?.league} </strong></h1>
-       <LeagueSeasons leagueId={leagueId} sportId={sportId} />
+       <LeagueSeasons leagueId={leagueId} sportId={sportId}  setLoading={setLoading} />
        </Container>  
         </>
     )

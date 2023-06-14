@@ -7,20 +7,17 @@ import Roaster from "./Roaster"
 
 const MatchSettings = ({ match , handleRemoveLineUp , handleAddLineUp, setLoading}) => {
     const [ teams, setTeams ] = useState([])
-
+    
     useEffect(() => {
         getTeams()
-        .then(data => {
-            setLoading(true)
-            setTeams(data.data)})
+        .then(data => setTeams(data.data))
         .catch(() => toast.error(' Failed to load teams'))
         .finally(() => setLoading(false))
-
     },[setLoading])
     
     const rostLocal = teams?.filter(team => team._id == match?.local?._id)
     const rostAway = teams?.filter(team => team._id == match?.away?._id)
- 
+
     return (
         <>
        

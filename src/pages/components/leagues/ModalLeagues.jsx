@@ -1,4 +1,4 @@
-import { Modal, Form , Button, FormControl } from "react-bootstrap"
+import { Modal, Form , Button, FormControl} from "react-bootstrap"
 import { useFormik } from "formik"
 import { getSports } from "../../../models/sport.models"
 import { useEffect, useState } from "react"
@@ -6,17 +6,15 @@ import { convertToBase64 } from "../../../helpers/converters"
 import toast from 'react-hot-toast'
 import { validateLeague } from "../../../helpers/validations"
 
-const ModalLeagues = ({ league, modalShow, handleClose, setLoading,  action, type, setUpdate }) =>{
+const ModalLeagues = ({ league, modalShow, handleClose, setLoading, action, type, setUpdate }) =>{
     const[ sports, setSports ] = useState([])
     const [ file , setFile ]= useState()
-
+  
     useEffect(() => {
         getSports()
-        .then(data=> {
-            setLoading(true)
-            setSports(data.data)})
+        .then(data=> setSports(data.data))
         .catch(() => toast.error('Failed to load sports'))
-        .finally(() => setLoading(false))
+        .finally(() => setLoading(false) )
     },[setLoading])
 
     const formik = useFormik({
@@ -30,6 +28,7 @@ const ModalLeagues = ({ league, modalShow, handleClose, setLoading,  action, typ
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit:  async (values) => {
+            setLoading(true)
             values = await Object.assign(values,{ poster : league?.poster || file || ''})
            action((!league?._id) ? values : league?._id, values)
            .then(() => toast.success(`It has been a success`))
@@ -37,7 +36,7 @@ const ModalLeagues = ({ league, modalShow, handleClose, setLoading,  action, typ
            .finally(() => {
             formik.resetForm()
             handleClose()
-            setLoading(true)
+            setLoading(false)
            })
          }
     })
@@ -52,6 +51,7 @@ const ModalLeagues = ({ league, modalShow, handleClose, setLoading,  action, typ
         setUpdate(false)
         handleClose()
     }
+
 
     return(
         <>

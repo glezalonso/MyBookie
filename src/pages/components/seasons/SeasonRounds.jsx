@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react"
 import { getRounds } from "../../../models/round.models"
 import { toast, Toaster } from "react-hot-toast"
-import {Spinner, Container } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 import TableRounds from "../rounds/TableRounds"
 
 
-const SeasonRounds = ({seasonId, sportId, leagueId, roundId}) => {
+const SeasonRounds = ({seasonId, sportId, leagueId, roundId, setLoading}) => {
     const [ rounds, setRounds ]= useState([])
-    const [ loading, setLoading ]= useState(false)
-   
+
     useEffect(()=> {
         getRounds()
-        .then(data =>{
-            setLoading(true)
-            setRounds(data.data)})
+        .then(data => setRounds(data.data))
         .catch(() => toast.error('Failed to load the rounds'))
         .finally(() => setLoading(false))
-    },[loading])
-
-    if(loading) return <Spinner animation="border" />
+    },[setLoading])
 
     return (
         <>

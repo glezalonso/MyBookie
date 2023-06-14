@@ -1,4 +1,4 @@
-import { Modal, Form , Button, FormControl} from "react-bootstrap"
+import { Modal, Form , Button, FormControl, Spinner} from "react-bootstrap"
 import { getTeams } from '../../../models/teams.models'
 import { useEffect, useState } from "react"
 import { useFormik } from "formik"
@@ -6,18 +6,15 @@ import { toast } from "react-hot-toast"
 import { validateMatch } from "../../../helpers/validations"
 
 
-const ModalMatches = ({match, modalShow, handleClose, setLoading, sportId, leagueId, seasonId, roundId,  action, type, setUpdate }) =>{
-     const [ teams , setTeams ] = useState([])
+const ModalMatches = ({match, modalShow, handleClose, sportId, leagueId, seasonId, roundId,  action, type, setUpdate, setLoading }) =>{
+    
+    const [ teams , setTeams ] = useState([])
+   
    useEffect(() => {
-         getTeams().then(data=> {
-            setLoading(true)
-            setTeams(data.data)})
+        getTeams().then(data=> setTeams(data.data))
             .catch(() => toast.error('Failed to load teams'))
             .finally(() => setLoading(false))
-
-    },[setTeams,setLoading])
-
-   
+    },[setLoading])
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -34,11 +31,12 @@ const ModalMatches = ({match, modalShow, handleClose, setLoading, sportId, leagu
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit:  async (values) => {
+            setLoading(true)
                  action((!match?._id) ? values : match?._id, values)
                 .then(() =>  toast.success(`It has been a success`))
                 .catch(()=> toast.error('An error has occurred'))
                 .finally(() => {
-                setLoading(true)
+                setLoading(false)
                 formik.resetForm()
                 handleClose()
                 

@@ -8,11 +8,13 @@ import toast from 'react-hot-toast'
 
 
 const TablePlayers = ({ players, setLoading } ) => {
+
     const [ modalShow, setModalShow ]= useState(false)
     const [ player, setPlayer] = useState([])
     const [ update , setUpdate] = useState(false)
     const [ dataFilter, setDataFilter] = useState('')
     const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
+  
 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
@@ -21,10 +23,11 @@ const TablePlayers = ({ players, setLoading } ) => {
 
 
     const handleDelete = (id) => {
+        setLoading(true)
         deletePlayer(id)
         .then(() => toast.success('Deleted player successfully')) 
         .catch(() => toast.error('Failed delete player'))
-        .finally(() => setLoading(true))   
+        .finally(() => setLoading(false))   
     }
 
     const handleUpdate = (data) => {

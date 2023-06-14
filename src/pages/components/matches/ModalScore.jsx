@@ -3,7 +3,7 @@ import { useFormik } from "formik"
 import { toast } from "react-hot-toast"
 import { closeMatch } from "../../../models/matches.models"
 
-const ModalScore = ({modalShow, handleClose, setLoading, matchId}) =>{
+const ModalScore = ({modalShow, handleClose, matchId, setLoading}) =>{
    
     const formik = useFormik({
         enableReinitialize: true,
@@ -15,13 +15,14 @@ const ModalScore = ({modalShow, handleClose, setLoading, matchId}) =>{
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit:  (values) => {
+            setLoading(true)
                 closeMatch(matchId , values)
                 .then(() => toast.success('Placed score succesfully'))
                 .catch(()=> toast.error('Failed to place score'))
                 .finally(() => {
-                setLoading(true)
                 formik.resetForm()
                 handleClose()
+                setLoading(false)
                 
             })      
         }

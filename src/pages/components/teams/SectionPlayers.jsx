@@ -2,26 +2,26 @@ import { useEffect, useState } from "react"
 import { getPlayers } from "../../../models/players.models"
 import { addPlayer } from "../../../models/teams.models"
 import toast from 'react-hot-toast'
-import { Col, Button, Table,Alert } from "react-bootstrap"
+import { Col, Button, Table, Alert} from "react-bootstrap"
 
 const SectionPlayers = ({team, setLoading}) => {
+   
     const [players, setPlayers] = useState([])
  
     useEffect(() =>{
      getPlayers()
-     .then(data => {
-        setLoading(true)
-        setPlayers(data.data)})
+     .then(data =>  setPlayers(data.data))
     .catch(() => toast.error('failed to load players'))
     .finally(() => setLoading(false))  
     },[setLoading])
     
     
     const handleAdd = (id , playerId, player) =>{
+    setLoading(true)
      addPlayer(id, { playerId, player })
      .then(() => toast.success('added player successfully'))
      .catch(() => toast.error('failed to add player'))
-     .finally(() => setLoading(true))
+     .finally(() => setLoading(false))
        
     }
 

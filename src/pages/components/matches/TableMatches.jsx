@@ -8,6 +8,7 @@ import ModalDelete from '../static/ModalDelete'
 
 
 const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoading } ) => {
+
     const [ modalShow, setModalShow ]= useState(false)
     const [ match, setMatch] = useState([])
     const [ update , setUpdate] = useState(false)
@@ -19,10 +20,13 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
     const handleShowDelete = (id) => setModalDelete({state: true , id:id})
 
     const handleDelete = (id) => {
+        setLoading(true)
         deleteMatch(id)
         .then(() =>  toast.success('Deleted match successfully'))
         .catch(()=> toast.error('Failed delete match'))
-        .finally(() =>  setLoading(true))  
+        .finally(() => {
+            handleCloseDelete()
+            setLoading(false)})  
     }
 
     const handleUpdate = (data) => {

@@ -2,7 +2,7 @@ import { Modal, Form , Button } from "react-bootstrap"
 import { useFormik } from "formik"
 import { toast } from 'react-hot-toast'
 
-const ModalUsers = ({ user, modalShow, handleClose, setLoading, action, type, setUpdate}) =>{
+const ModalUsers = ({ user, modalShow, handleClose,  action, type, setUpdate}) =>{
    
     const formik = useFormik({
         enableReinitialize:true,
@@ -23,7 +23,7 @@ const ModalUsers = ({ user, modalShow, handleClose, setLoading, action, type, se
             .finally(() => {
                 formik.resetForm()
                 handleClose()
-                setLoading(true)
+               
             })
             
            
@@ -73,7 +73,7 @@ const ModalUsers = ({ user, modalShow, handleClose, setLoading, action, type, se
                 
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseUpdate}>Close</Button>
+            <Button variant="secondary" onClick={() =>handleCloseUpdate()}>Close</Button>
                 <Button variant="primary" type="submit">{type} user</Button>
             </Modal.Footer>
         </Form>

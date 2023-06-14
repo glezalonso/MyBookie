@@ -15,9 +15,7 @@ const SeasonDetail = () => {
 
     useEffect(() => {
         getSeason(seasonId)
-        .then(data=> {
-            setLoading(true)
-            setSeason(data.data)})
+        .then(data=> setSeason(data.data))
         .catch(() => toast.error('Failed to load season'))
         .finally(() => setLoading(false))
         
@@ -31,7 +29,7 @@ const SeasonDetail = () => {
         <Toaster position="botton-center" reverseOrder={false} />
         <Container  fluid className="bg-dark text-white mt-1">
         <h1 className="h1"><strong>{season?.league?.league} </strong>{season?.season}</h1>
-            <SeasonRounds seasonId={seasonId} sportId={sportId} leagueId={leagueId} roundId={roundId} />
+            <SeasonRounds seasonId={seasonId} sportId={sportId} leagueId={leagueId} roundId={roundId} setLoading={setLoading} />
          </Container>
         </>
     )

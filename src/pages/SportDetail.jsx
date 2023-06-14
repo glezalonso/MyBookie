@@ -13,11 +13,9 @@ const SportDetail = () => {
   
     useEffect(() =>{
         getSport(sportId)
-        .then(data => {
-            setLoading(true)
-            setSport(data.data)})
+        .then(data => setSport(data.data))
         .catch(() => toast.error('Failed to load sport'))
-        .finally(() => setLoading(false))
+        .finally(()=> setLoading(false))
     },[sportId, loading])
 
     if(loading) return <Spinner animation="border" />
@@ -27,10 +25,10 @@ const SportDetail = () => {
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container fluid className="bg-dark text-white mt-1" >
-        <header>
-        <h1 className="h1">{sport?.sport}</h1>
-        </header>
-        <SportLeagues sportId={sportId}/>
+             <header>
+            <h1 className="h1">{sport?.sport}</h1>
+            </header>
+        <SportLeagues sportId={sportId} setLoading={setLoading} />
         </Container>
         </>
     )

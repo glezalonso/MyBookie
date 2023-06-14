@@ -11,12 +11,9 @@ const Teams = () => {
    
     useEffect(() => {
         getTeams()
-        .then(data=> {
-            setLoading(true)
-            setTeams(data.data)
-        })
+        .then(data=> setTeams(data.data))
         .catch(() => toast.error('Failed to load teams'))
-        .finally(() => setLoading(false))
+        .finally(()=> setLoading(false))
     },[loading])
 
     if(loading) return <Spinner animation="border" />  
@@ -28,8 +25,8 @@ const Teams = () => {
         <Container  fluid className="bg-dark text-white mt-1">
             <h1 className="h1">Teams</h1>
             
-            {(teams.length > 0)
-            ? <TableTeams teams={teams} setLoading={setLoading} /> 
+            {(teams?.length > 0)
+            ? <TableTeams teams={teams} setLoading={setLoading}/> 
             :<Alert variant="info">There is no information to show!</Alert>}
             
        </Container>

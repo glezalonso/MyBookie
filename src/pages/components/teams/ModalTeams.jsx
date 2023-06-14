@@ -13,9 +13,7 @@ const ModalTeams = ({ team, modalShow, handleClose, setLoading, action, type, se
 
     useEffect(() => {
         getSports()
-        .then(data=> {
-            setLoading(true)
-            setSports(data.data)})
+        .then(data=> setSports(data.data))
         .catch(()=> toast.error('Failed to load sports'))
         .finally(() => setLoading(false))
     },[setLoading])
@@ -32,6 +30,7 @@ const ModalTeams = ({ team, modalShow, handleClose, setLoading, action, type, se
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit:  async (values) => {
+            setLoading(true)
             values = await Object.assign(values,{ poster : team?.poster || file || ''})
            action((!team?._id) ? values : team?._id, values)
            .then(()=> toast.success(`It has been a success`))
@@ -39,7 +38,7 @@ const ModalTeams = ({ team, modalShow, handleClose, setLoading, action, type, se
            .finally(() => {
             formik.resetForm()
             handleClose()
-            setLoading(true)
+            setLoading(false)
            })
          }
     })
@@ -96,7 +95,7 @@ const ModalTeams = ({ team, modalShow, handleClose, setLoading, action, type, se
                 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="warning" onClick={handleCloseUpdate}>Close</Button>
+                <Button variant="warning" onClick={() => handleCloseUpdate()}>Close</Button>
                 <Button variant="dark" type="submit">{type} team</Button>
             </Modal.Footer>
         </Form>

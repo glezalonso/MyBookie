@@ -10,14 +10,10 @@ const Players = () => {
     const [ loading, setLoading]= useState(false)
    
     useEffect(() =>{
-       
-            getPlayers()
-            .then(data => {
-                setLoading(true)
-                setPlayers(data.data)})
+        getPlayers()
+            .then(data => setPlayers(data.data))
             .catch(() => toast.error('Failed to load players'))
             .finally(() => setLoading(false))
-            
     },[loading])
 
     if(loading) return <Spinner animation="border" />

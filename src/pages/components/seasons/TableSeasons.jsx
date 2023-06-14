@@ -7,6 +7,7 @@ import ModalSeasons from './ModalSeasons'
 import ModalDelete from '../static/ModalDelete'
 
 const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
+
     const [ modalShow, setModalShow ]= useState(false)
     const [ season, setSeason ] = useState([])
     const [ update , setUpdate] = useState(false)
@@ -19,13 +20,16 @@ const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
 
 
     const handleDelete = (id) => {
+        setLoading(true)
         deleteSeason(id)
         .then(() => {
             toast.success('Deleted season successfully')
             setLoading(true)
             setModalShow(false)})
         .catch(() => toast.error('Failed season delete'))
-        .finally(() => {setLoading(true)})   
+        .finally(() => {
+            handleCloseDelete()
+            setLoading(false)})   
     }
 
     const handleUpdate = (data) => {
@@ -33,6 +37,7 @@ const TableSeasons= ({ seasons, leagueId, sportId, setLoading} ) => {
         setSeason(data)
         setUpdate(true)
     }
+    
 
     const seasonsBySport = seasons?.filter(season => season?.league?._id == leagueId)
     return(

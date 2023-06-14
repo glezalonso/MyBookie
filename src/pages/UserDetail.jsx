@@ -13,13 +13,10 @@ const UserDetail = () => {
 
     useEffect(() => {
         getUser(userId)
-        .then(data => {
-            setLoading(true)
-            setUser(data.data)
-        })
+        .then(data => setUser(data.data))
         .catch(() => toast.error('Failed to load users'))
         .finally(() => setLoading(false))
-    },[loading, userId])
+    },[ userId])
 
     if(loading) return <Spinner animation="border" />
    

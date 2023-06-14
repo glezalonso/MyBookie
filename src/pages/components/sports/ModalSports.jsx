@@ -7,8 +7,9 @@ import { validateSport } from "../../../helpers/validations"
 
 
 const ModalSports = ({ sport, modalShow, handleClose, setLoading, action, type, setUpdate}) =>{
-    const [ file , setFile ]= useState()
     
+    const [ file , setFile ]= useState()
+   
     const formik = useFormik({
         enableReinitialize:true,
         initialValues:{
@@ -19,6 +20,7 @@ const ModalSports = ({ sport, modalShow, handleClose, setLoading, action, type, 
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit:  async (values) => {
+            setLoading(true)
             values = await Object.assign(values,{  poster : sport?.poster || file || ''})
             action((!sport?._id) ? values : sport?._id, values)
             .then(()=> toast.success(`It has been a success`))
@@ -26,7 +28,7 @@ const ModalSports = ({ sport, modalShow, handleClose, setLoading, action, type, 
             .finally(() => {
                 formik.resetForm()
                 handleClose()
-                setLoading(true)
+                setLoading(false)
             })
             
            

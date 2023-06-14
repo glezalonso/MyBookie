@@ -6,12 +6,13 @@ import toast from 'react-hot-toast'
 import ModalRounds from './ModalRounds'
 import ModalDelete from '../static/ModalDelete'
 
-const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading}) => {
+const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading }) => {
 
     const [ modalShow, setModalShow ]= useState(false)
     const [ round , setRound ]= useState([])
     const [ update , setUpdate] = useState(false)
     const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
+   
 
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
@@ -20,10 +21,13 @@ const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading}) => {
 
 
     const handleDelete = (id) => {
+        setLoading(true)
         deleteRound(id)
         .then(() => toast.success('Deleted round successfully'))
         .catch(()=> toast.error('Failed delete round'))
-        .finally(() =>  setLoading(true))  
+        .finally(() => {
+            handleCloseDelete()
+            setLoading(false)})  
     }
 
     

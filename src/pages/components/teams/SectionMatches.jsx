@@ -5,19 +5,19 @@ import { Table, Alert } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 
 const SectionMatches = ({teamId, setLoading}) => {
+    
     const [ matches ,setMatches] = useState([])
 
     useEffect(()=> {
         getMatches()
         .then(data => {
-            setLoading(true)
             setMatches(data.data)} )
         .catch(() => toast.error('Failed to upload matches'))
         .finally(() => setLoading(false))
     },[setLoading])
 
     const filterMatches = matches?.filter( match => match?.local?._id == teamId || match?.away?._id == teamId)
-   
+
     return( 
         <>
         <h4>Matches</h4> 

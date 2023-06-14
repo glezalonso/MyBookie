@@ -11,13 +11,10 @@ const Users = () => {
 
     useEffect(() => {
         getUsers()
-        .then(data => {
-            setLoading(true)
-            setUsers(data.data)
-        })
+        .then(data => setUsers(data.data))
         .catch(() => toast.error('Failed to load users'))
         .finally(() => setLoading(false))
-    },[loading])
+    },[])
 
     if(loading) return <Spinner animation="border" />
  
@@ -26,8 +23,8 @@ const Users = () => {
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container fluid className="bg-dark text-white mt-1">    
-        <h2 className="h2">Users</h2>
-        <TableUsers users={users} setLoading={setLoading} />
+            <h2 className="h2">Users</h2>
+             <TableUsers users={users}  />
         </Container>    
         </>
     )

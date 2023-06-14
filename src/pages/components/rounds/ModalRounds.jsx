@@ -11,11 +11,9 @@ const ModalRounds = ({ round ,modalShow, handleClose, setLoading, action, type, 
 
     useEffect(() => {
         getSeasons()
-        .then( data => {
-            setLoading(true)
-            setSeasons(data.data)})
+        .then( data => setSeasons(data.data))
         .catch(() => toast.error('Failed to load seasons'))
-        .finally(()=> setLoading(false))
+        .finally(() => setLoading(false))
     },[setLoading])
     
     const formik = useFormik({
@@ -30,13 +28,14 @@ const ModalRounds = ({ round ,modalShow, handleClose, setLoading, action, type, 
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit: (values) => {
+            setLoading(true)
              action((!round?._id) ? values : round?._id, values)
              .then(()=> toast.success(`It has been a success`))
                 .catch(()=> toast.error('An error has occurred'))
                 .finally(() => {
-                setLoading(true)
                 formik.resetForm()
                 handleClose()
+                setLoading(false)
             })      
         }
     })

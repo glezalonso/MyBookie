@@ -14,9 +14,7 @@ const MatchDetail = () => {
     
     useEffect(() =>{
         getMatch(matchId)
-        .then(data => {
-            setLoading(true)
-            setMatch(data.data)})
+        .then(data => setMatch(data.data))
         .catch(() => toast.error('Failed to load match'))
         .finally(() => setLoading(false))
     },[matchId, loading])
@@ -28,7 +26,7 @@ const MatchDetail = () => {
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container  fluid className="bg-dark text-white mt-1">
-               <MatchContent key={matchId} match={match}  setLoading={setLoading} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId}/>
+               <MatchContent key={matchId} match={match} sportId={sportId} leagueId={leagueId} seasonId={seasonId} roundId={roundId} setLoading={setLoading}/>
         </Container>
         </>
     )

@@ -11,14 +11,11 @@ const Sports = () => {
 
     useEffect(() =>{ 
         getSports()
-        .then(data=> {
-            setLoading(true)
-            setSports(data.data)
-        })
+        .then(data=> setSports(data.data))
         .catch(()=> toast.error('Failed to load sports'))
-        .finally(()=> setLoading(false) ) 
+        .finally(() => setLoading(false))
     },[loading])
-    
+
     if(loading) return <Spinner animation="border" />
 
     return(

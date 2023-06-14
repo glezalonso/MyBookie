@@ -11,11 +11,10 @@ const ModalSeasons = ({season, modalShow, handleClose, setLoading, leagueId, act
     const[ leagues, setLeagues ] = useState([])
  
     useEffect(() => {
-        getLeagues().then(data=> {
-            setLoading(true)
-            setLeagues(data.data)})
-            .catch(() => toast.error('Failed to load the leagues'))
-            .finally(() => setLoading(false))
+        getLeagues()
+        .then(data=> setLeagues(data.data))
+        .catch(() => toast.error('Failed to load the leagues'))
+        .finally(() => setLoading(false)) 
     },[setLoading])
     
     const formik = useFormik({
@@ -30,13 +29,14 @@ const ModalSeasons = ({season, modalShow, handleClose, setLoading, leagueId, act
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit: (values) => {
+            setLoading(true)
              action((!season?._id) ? values : season?._id, values)
             .then(() => toast.success(`It has been a success`))
             .catch(()=> toast.error('An error has occurred'))
             .finally(() => {
-                setLoading(true)
                 formik.resetForm()
                 handleClose()
+                setLoading(false)
             })      
         }
     })

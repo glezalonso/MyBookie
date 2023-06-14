@@ -6,13 +6,13 @@ import { deleteLeague, createLeague, updateLeague } from '../../../models/league
 import ModalLeagues from './ModalLeagues'
 import ModalDelete from '../static/ModalDelete'
 
-const TableLeagues = ({ leagues, sportId, setLoading}) => {
+const TableLeagues = ({ leagues, sportId, setLoading }) => {
 
     const [ modalShow, setModalShow ]= useState(false)
     const [ league, setLeague] = useState([])
     const [ update , setUpdate] = useState(false)
     const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
-
+    
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
     const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
@@ -20,10 +20,13 @@ const TableLeagues = ({ leagues, sportId, setLoading}) => {
 
 
     const handleDelete = (id) =>{
+        setLoading(true)
         deleteLeague(id)
         .then(() =>   toast.success('Deleted league successfully'))
         .catch(() => toast.error('Failed delete league'))
-        .finally(() => setLoading(true)) 
+        .finally(() => {
+            handleCloseDelete()
+            setLoading(false)}) 
     }
 
     const handleUpdate = (data) => {
@@ -31,7 +34,6 @@ const TableLeagues = ({ leagues, sportId, setLoading}) => {
         setLeague(data)
         setUpdate(true)
     }
-
 
     const leagueBySport = leagues?.filter(league => league?.sport?._id == sportId)
 

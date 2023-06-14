@@ -1,14 +1,19 @@
-import { Col, Alert, Button, Table } from "react-bootstrap"
+import { Col, Alert, Button, Table} from "react-bootstrap"
 import { removePlayer } from "../../../models/teams.models"
 import toast from 'react-hot-toast'
+
+
 const SectionRoster = ({team, setLoading }) => {
+   
 
      const handleRemove = (id, playerId, player) => {
+        setLoading(true)
        removePlayer(id, { playerId, player })
        .then(()=> toast.success('Removed player successfully'))
        .catch(() => toast.error('Failed player remove'))
-       .finally(() => setLoading(true))
+       .finally(() => setLoading(false))
        }
+
       
     return (
         <>

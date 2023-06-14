@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
-import { Table, Button, Alert } from 'react-bootstrap'
+import { Table, Button, Alert, Spinner } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
 import { deleteUser, register, updateUser } from '../../../models/users.models'
 import ModalUsers from './ModalUsers'
 import ModalDelete from '../static/ModalDelete'
 import { useState } from 'react'
 
-const TableUsers = ({ users, setLoading } ) => {
+const TableUsers = ({ users } ) => {
 
     const [ modalShow, setModalShow ]= useState(false)
+    const [ loading, setLoading]= useState(false)
     const [ user, setUser ] = useState([])
     const [ update , setUpdate] = useState(false)
     const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
@@ -30,12 +31,14 @@ const TableUsers = ({ users, setLoading } ) => {
         setUser(data)
         setUpdate(true)
     }
+    if(loading) return <Spinner animation="border" />
+
     return(
         <>
          <Button className="btn btn-warning mb-2" onClick={handleShow}> Create user</Button>
         {(!update)
-        ?<ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={register} type={'Create'} setUpdate={setUpdate} />
-        :<ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateUser} type={'Edit'}  setUpdate={setUpdate} /> }
+        ?<ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={register} type={'Create'} setUpdate={setUpdate} />
+        :<ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Edit'}  setUpdate={setUpdate} /> }
         {(users.length > 0) ? 
         <Table responsive variant="dark" striped>
         <thead >

@@ -12,9 +12,8 @@ const ModalPlayers = ({ player, modalShow, handleClose, setLoading, action, type
     const [ file, setFile ] = useState()
     
     useEffect(() => {
-        getSports().then(data=> {
-            setLoading(true)
-            setSports(data.data)})
+        getSports()
+        .then(data=> setSports(data.data))
             .catch(() => toast.error('Failed to load sports'))
             .finally(() => setLoading(false))
     },[setLoading])
@@ -32,14 +31,15 @@ const ModalPlayers = ({ player, modalShow, handleClose, setLoading, action, type
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit:  async (values) => {
+            setLoading(true)
             values = await Object.assign(values,{ photo : player?.photo || file || ''})
             action((!player?._id) ? values : player?._id, values)
              .then(()=> toast.success(`It has been a success`))
             .catch(()=> toast.error('An error has occurred'))
             .finally(() => {
-                setLoading(true)
                 formik.resetForm()
                 handleClose()
+                setLoading(false)
             })      
         }
     })

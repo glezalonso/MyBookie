@@ -20,16 +20,21 @@ const TableSports = ({ sports, setLoading } ) => {
     
 
     const handleDelete = (id) => {
+        setLoading(true)
         deleteSport(id)
         .then(() => toast.success('Deleted sport successfully'))
         .catch(()=> toast.error('Failed sport delete'))
-        .finally(() =>  setLoading(true))  
+        .finally(() => { 
+            handleCloseDelete()
+            setLoading(false)})  
     }
     const handleUpdate = (data) => {
         handleShow()
         setSport(data)
         setUpdate(true)
     }
+    
+
     return(
         <>
          <Button variant="warning mb-2" onClick={handleShow}> Create sport</Button>
@@ -59,7 +64,7 @@ const TableSports = ({ sports, setLoading } ) => {
          </tbody>
         </Table>
           : <Alert variant="info sm">There is no information to show!</Alert>} 
-           <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
+           <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} setLoading={setLoading} handleDelete={handleDelete}  />
         </>
     )
 }

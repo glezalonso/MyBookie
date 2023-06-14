@@ -13,9 +13,7 @@ const PlayerDetail = () => {
 
     useEffect(() => {
         getPlayer(playerId)
-        .then(data=> {
-            setLoading(true)
-            setPlayer(data.data)})
+        .then(data=> setPlayer(data.data))
         .catch(() => toast.error('Failed to load player'))
         .finally(() => setLoading(false))
         
