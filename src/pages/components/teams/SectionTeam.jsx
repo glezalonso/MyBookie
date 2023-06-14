@@ -1,6 +1,8 @@
-import { Image } from "react-bootstrap"
-const SectionTeam = ({team}) => {
-    return (
+import React from 'react'
+import { Image } from 'react-bootstrap'
+
+const SectionTeam = ({ team }) => {
+  return (
         <>
         <div className="mb-4">
             <h2 className="h2">{team?.name}</h2><div>
@@ -10,6 +12,6 @@ const SectionTeam = ({team}) => {
             <span><strong>Sport :</strong>  {team?.sport?.sport} </span>
          </div>
         </>
-    )
+  )
 }
 export default SectionTeam

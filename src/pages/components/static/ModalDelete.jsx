@@ -1,6 +1,7 @@
-import { Modal, Button} from "react-bootstrap"
-const ModalDelete = ({ modalDelete  , handleCloseDelete, handleDelete}) => {
-        return (
+import React from 'react'
+import { Modal, Button } from 'react-bootstrap'
+const ModalDelete = ({ modalDelete, handleCloseDelete, handleDelete }) => {
+  return (
             <>
               <Modal className="text-dark"
         show={modalDelete.state}
@@ -22,6 +23,6 @@ const ModalDelete = ({ modalDelete  , handleCloseDelete, handleDelete}) => {
         </Modal.Footer>
       </Modal>
             </>
-        )
+  )
 }
 export default ModalDelete

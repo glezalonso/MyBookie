@@ -8,6 +8,6 @@ export const getUsers = () => axios.get('/api/users')
 
 export const getUser = (id) => axios.get(`/api/users/${id}`)
 
-export const updateUser = (id,body) => axios.put(`/api/users/${id}`, body)
+export const updateUser = (id, body) => axios.put(`/api/users/${id}`, body)
 
 export const deleteUser = (id) => axios.delete(`/api/users/${id}`)

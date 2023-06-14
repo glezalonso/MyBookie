@@ -1,50 +1,49 @@
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert } from 'react-bootstrap'
-import { useState } from 'react'
 import { deleteMatch, updateMatch, createMatch } from '../../../models/matches.models'
 import { toast } from 'react-hot-toast'
 import ModalMatches from './ModalMatches'
 import ModalDelete from '../static/ModalDelete'
 
+const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoading }) => {
+  const [modalShow, setModalShow] = useState(false)
+  const [match, setMatch] = useState([])
+  const [update, setUpdate] = useState(false)
+  const [modalDelete, setModalDelete] = useState({ state: false, id: '' })
 
-const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoading } ) => {
+  const handleClose = () => setModalShow(false)
+  const handleShow = () => setModalShow(true)
+  const handleCloseDelete = () => setModalDelete({ ...modalDelete, state: false })
+  const handleShowDelete = (id) => setModalDelete({ state: true, id })
 
-    const [ modalShow, setModalShow ]= useState(false)
-    const [ match, setMatch] = useState([])
-    const [ update , setUpdate] = useState(false)
-    const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
+  const handleDelete = (id) => {
+    setLoading(true)
+    deleteMatch(id)
+      .then(() => toast.success('Deleted match successfully'))
+      .catch(() => toast.error('Failed delete match'))
+      .finally(() => {
+        handleCloseDelete()
+        setLoading(false)
+      })
+  }
 
-    const handleClose = () => setModalShow(false)
-    const handleShow = () => setModalShow(true)
-    const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
-    const handleShowDelete = (id) => setModalDelete({state: true , id:id})
+  const handleUpdate = (data) => {
+    handleShow()
+    setMatch(data)
+    setUpdate(true)
+  }
 
-    const handleDelete = (id) => {
-        setLoading(true)
-        deleteMatch(id)
-        .then(() =>  toast.success('Deleted match successfully'))
-        .catch(()=> toast.error('Failed delete match'))
-        .finally(() => {
-            handleCloseDelete()
-            setLoading(false)})  
-    }
+  const matchesByRound = matches?.filter(match => match?.round?._id === roundId)
 
-    const handleUpdate = (data) => {
-        handleShow()
-        setMatch(data)
-        setUpdate(true)
-    }
-
-    const matchesByRound = matches?.filter( match => match?.round?._id == roundId) 
-   
-   return(
+  return (
         <>
-        <Button className="btn btn-warning mb-2" onClick={handleShow} >Create match</Button> 
+        <Button className="btn btn-warning mb-2" onClick={handleShow} >Create match</Button>
          {(!update)
-        ?<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/>
-        :<ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'}  setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/> }
-         {(matches.length > 0)?
-         <Table responsive variant="dark" striped>
+           ? <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/>
+           : <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/> }
+         {(matches.length > 0)
+           ? <Table responsive variant="dark" striped>
         <thead>
             <tr>
                 <th>Date</th>
@@ -74,9 +73,9 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
         ))}
          </tbody>
         </Table>
-         :<Alert variant="info">there is no information to show!</Alert>} 
-        <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
+           : <Alert variant="info">there is no information to show!</Alert>}
+        <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete} />
         </>
-    )
+  )
 }
- export default TableMatches
+export default TableMatches

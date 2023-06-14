@@ -1,8 +1,8 @@
-import axios from "../libs/axios"
+import axios from '../libs/axios'
 
 export const getSports = () => axios.get('/api/sports')
 
-export const getSport = (id) =>  axios.get(`/api/sports/${id}`)
+export const getSport = (id) => axios.get(`/api/sports/${id}`)
 
 export const createSport = (body) => axios.post('/api/sports', body)
 

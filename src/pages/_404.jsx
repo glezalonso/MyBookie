@@ -1,9 +1,10 @@
+import React from 'react'
 const _404 = () => {
-    return(
+  return (
         <>
         <h1>Page not Found!</h1>
         </>
-    )
+  )
 }
 
 export default _404

@@ -1,34 +1,33 @@
-import { Modal, Form , Button, FormControl } from "react-bootstrap"
-import { useFormik } from "formik"
-import { toast } from "react-hot-toast"
-import { closeMatch } from "../../../models/matches.models"
+import React from 'react'
+import { Modal, Form, Button, FormControl } from 'react-bootstrap'
+import { useFormik } from 'formik'
+import { toast } from 'react-hot-toast'
+import { closeMatch } from '../../../models/matches.models'
 
-const ModalScore = ({modalShow, handleClose, matchId, setLoading}) =>{
-   
-    const formik = useFormik({
-        enableReinitialize: true,
-        initialValues:{
-            local:'',
-            away:''
-        },
-        validate: false,
-        validateOnBlur: false,
-        validateOnChange: false,
-        onSubmit:  (values) => {
-            setLoading(true)
-                closeMatch(matchId , values)
-                .then(() => toast.success('Placed score succesfully'))
-                .catch(()=> toast.error('Failed to place score'))
-                .finally(() => {
-                formik.resetForm()
-                handleClose()
-                setLoading(false)
-                
-            })      
-        }
-    })
+const ModalScore = ({ modalShow, handleClose, matchId, setLoading }) => {
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      local: '',
+      away: ''
+    },
+    validate: false,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: (values) => {
+      setLoading(true)
+      closeMatch(matchId, values)
+        .then(() => toast.success('Placed score succesfully'))
+        .catch(() => toast.error('Failed to place score'))
+        .finally(() => {
+          formik.resetForm()
+          handleClose()
+          setLoading(false)
+        })
+    }
+  })
 
-    return(
+  return (
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
@@ -49,10 +48,9 @@ const ModalScore = ({modalShow, handleClose, matchId, setLoading}) =>{
             </Modal.Footer>
         </Form>
       </Modal>
-        
-        </>
-    )
 
+        </>
+  )
 }
 
 export default ModalScore

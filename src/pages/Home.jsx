@@ -1,11 +1,11 @@
+import React from 'react'
 import Navigate from './components/static/Navigate'
 const Home = () => {
-
-    return ( 
+  return (
         <>
         <Navigate></Navigate>
         </>
-    )    
+  )
 }
 
 export default Home

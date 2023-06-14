@@ -1,19 +1,19 @@
-import {  Link  } from "react-router-dom"
-import { useNavigate} from 'react-router-dom'
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../../store/auth'
 import toast from 'react-hot-toast'
 
 const Navigate = () => {
-  const logOut = useAuthStore(state=> state.logOut)
+  const logOut = useAuthStore(state => state.logOut)
   const isAdmin = useAuthStore(state => state.isAdmin)
-  const navigate= useNavigate()
-  const handleLogOut = () =>{
-      logOut()
-      toast.success('Log out successfuly')
-      navigate('/')
-    }
-    
-    return(
+  const navigate = useNavigate()
+  const handleLogOut = () => {
+    logOut()
+    toast.success('Log out successfuly')
+    navigate('/')
+  }
+
+  return (
         <>
           <div className="navbar navbar-expand-sm bg-dark navbar-dark">
             <div className="container-fluid">
@@ -35,19 +35,19 @@ const Navigate = () => {
                     <li className="nav-item">
                       <Link className="nav-link" to={'../sports'}>Sport</Link>
                     </li>
-                    {(isAdmin) ?
-                    <li className="nav-item">
+                    {(isAdmin)
+                      ? <li className="nav-item">
                       <Link className="nav-link" to={'../users'}>Users</Link>
                     </li>
-                    : null}
-                 
+                      : null}
+
                     <li className="nav-item"><button className="btn btn-warning" onClick={() => handleLogOut()}>Log out</button></li>
                     </ul>
-               </div> 
-            </div>    
+               </div>
+            </div>
           </div>
         </>
-    )
+  )
 }
 
 export default Navigate

@@ -1,43 +1,39 @@
-import { Modal, Form , Button } from "react-bootstrap"
-import { useFormik } from "formik"
+import React from 'react'
+import { Modal, Form, Button } from 'react-bootstrap'
+import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast'
 
-const ModalUsers = ({ user, modalShow, handleClose,  action, type, setUpdate}) =>{
-   
-    const formik = useFormik({
-        enableReinitialize:true,
-        initialValues:{
-            username: user?.username || '',
-            password:user?.password || '',
-            email: user?.email || '',
-            fullName: user?.fullName || '',
-            isAdmin: user?.isAdmin || ''
-        },
-        validate:false,
-        validateOnBlur: false,
-        validateOnChange: false,
-        onSubmit:   (values) => {
-             action((!user?._id) ? values : user?._id, values)
-            .then(()=> toast.success(`It has been a success`))
-            .catch(()=> toast.error(`An error has occurred`))
-            .finally(() => {
-                formik.resetForm()
-                handleClose()
-               
-            })
-            
-           
-        }
-    })
-    
-   
-    const handleCloseUpdate = () => {
-        formik.resetForm() 
-        setUpdate(false)
-        handleClose()
+const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) => {
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      username: user?.username || '',
+      password: user?.password || '',
+      email: user?.email || '',
+      fullName: user?.fullName || '',
+      isAdmin: user?.isAdmin || ''
+    },
+    validate: false,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: (values) => {
+      action((!user?._id) ? values : user?._id, values)
+        .then(() => toast.success('It has been a success'))
+        .catch(() => toast.error('An error has occurred'))
+        .finally(() => {
+          formik.resetForm()
+          handleClose()
+        })
     }
+  })
 
-    return(
+  const handleCloseUpdate = () => {
+    formik.resetForm()
+    setUpdate(false)
+    handleClose()
+  }
+
+  return (
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
@@ -69,19 +65,17 @@ const ModalUsers = ({ user, modalShow, handleClose,  action, type, setUpdate}) =
                             <option value={false}>No</option>
                         </Form.Select>
                     </Form.Group>
-                    
-                
+
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={() =>handleCloseUpdate()}>Close</Button>
+            <Button variant="secondary" onClick={() => handleCloseUpdate()}>Close</Button>
                 <Button variant="primary" type="submit">{type} user</Button>
             </Modal.Footer>
         </Form>
       </Modal>
-        
-        </>
-    )
 
+        </>
+  )
 }
 
 export default ModalUsers

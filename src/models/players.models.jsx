@@ -1,6 +1,6 @@
-import axios from "../libs/axios";
+import axios from '../libs/axios'
 
-export const getPlayers =  async () =>  axios.get('/api/players')
+export const getPlayers = async () => axios.get('/api/players')
 
 export const getPlayer = (id) => axios.get(`/api/players/${id}`)
 

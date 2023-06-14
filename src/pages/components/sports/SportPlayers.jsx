@@ -1,6 +1,7 @@
+import React from 'react'
 const SportPlayers = () => {
-    return (
+  return (
         <></>
-    )
+  )
 }
 export default SportPlayers

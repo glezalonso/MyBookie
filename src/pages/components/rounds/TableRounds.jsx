@@ -1,51 +1,48 @@
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Table, Alert } from 'react-bootstrap'
 import { deleteRound, updateRound, createRound } from '../../../models/round.models'
-import { useState } from 'react'
 import toast from 'react-hot-toast'
 import ModalRounds from './ModalRounds'
 import ModalDelete from '../static/ModalDelete'
 
-const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading }) => {
+const TableRounds = ({ rounds, sportId, leagueId, seasonId, setLoading }) => {
+  const [modalShow, setModalShow] = useState(false)
+  const [round, setRound] = useState([])
+  const [update, setUpdate] = useState(false)
+  const [modalDelete, setModalDelete] = useState({ state: false, id: '' })
 
-    const [ modalShow, setModalShow ]= useState(false)
-    const [ round , setRound ]= useState([])
-    const [ update , setUpdate] = useState(false)
-    const [ modalDelete, setModalDelete] = useState({state: false, id: ''})
-   
+  const handleClose = () => setModalShow(false)
+  const handleShow = () => setModalShow(true)
+  const handleCloseDelete = () => setModalDelete({ ...modalDelete, state: false })
+  const handleShowDelete = (id) => setModalDelete({ state: true, id })
 
-    const handleClose = () => setModalShow(false)
-    const handleShow = () => setModalShow(true)
-    const handleCloseDelete = () => setModalDelete({...modalDelete ,state :false})
-    const handleShowDelete = (id) => setModalDelete({state: true , id:id})
+  const handleDelete = (id) => {
+    setLoading(true)
+    deleteRound(id)
+      .then(() => toast.success('Deleted round successfully'))
+      .catch(() => toast.error('Failed delete round'))
+      .finally(() => {
+        handleCloseDelete()
+        setLoading(false)
+      })
+  }
 
+  const handleUpdate = (data) => {
+    handleShow()
+    setRound(data)
+    setUpdate(true)
+  }
+  const roundsBySeason = rounds?.filter(round => round?.season?._id === seasonId)
 
-    const handleDelete = (id) => {
-        setLoading(true)
-        deleteRound(id)
-        .then(() => toast.success('Deleted round successfully'))
-        .catch(()=> toast.error('Failed delete round'))
-        .finally(() => {
-            handleCloseDelete()
-            setLoading(false)})  
-    }
-
-    
-    const handleUpdate = (data) => {
-        handleShow()
-        setRound(data)
-        setUpdate(true)
-    }
-    const roundsBySeason = rounds?.filter( round => round?.season?._id == seasonId) 
-    
-    return(
+  return (
         <>
          <Button variant="warning mb-2" onClick={handleShow}>Create round</Button>
          {(!update)
-        ?<ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createRound} type={'Create'} setUpdate={setUpdate} seasonId={seasonId} />
-        :<ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateRound} type={'Edit'}  setUpdate={setUpdate} seasonId={seasonId} /> }
-       {(rounds.length > 0)  ?
-        <Table responsive variant="dark" striped>
+           ? <ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createRound} type={'Create'} setUpdate={setUpdate} seasonId={seasonId} />
+           : <ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateRound} type={'Edit'} setUpdate={setUpdate} seasonId={seasonId} /> }
+       {(rounds.length > 0)
+         ? <Table responsive variant="dark" striped>
             <thead>
                 <tr>
                 <th>Round</th>
@@ -72,8 +69,8 @@ const TableRounds = ({ rounds, sportId ,leagueId ,seasonId, setLoading }) => {
          </tbody>
         </Table>
          : <Alert variant="info">there is no information to show!</Alert>}
-         <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete}  />
+         <ModalDelete modalDelete={modalDelete} handleCloseDelete={handleCloseDelete} handleDelete={handleDelete} />
         </>
-    )
+  )
 }
- export default TableRounds
+export default TableRounds
