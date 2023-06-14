@@ -58,7 +58,7 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
         <tbody>
         {matchesByRound?.map(match => (
         <tr key={match._id} >
-         <td>{match?.date?.split('T')[0]}</td>
+         <td>{match?.date?.split('.')[0]}</td>
          <td>{match?.league?.league}</td>
          <td>{match?.season?.season}</td>
          <td>{match?.round?.round}</td>

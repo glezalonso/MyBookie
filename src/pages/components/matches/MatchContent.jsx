@@ -35,7 +35,7 @@ const MatchContent = ({ match, roundId, setLoading }) => {
 
             <tbody>
 
-            <tr><td>Date</td><td>{match?.date}</td></tr>
+            <tr><td>Date</td><td>{match?.date?.split('.')[0]}</td></tr>
             <tr><td>League </td><td>{match?.league?.league}</td></tr>
             <tr><td>Season</td><td>{match?.season?.season}</td></tr>
             <tr><td>Round</td><td>{match?.round?.round}</td></tr>

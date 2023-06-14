@@ -17,7 +17,7 @@ const ModalMatches = ({ match, modalShow, handleClose, sportId, leagueId, season
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      date: match?.date?.split('T')[0] || '',
+      date: match?.date || '',
       teamHome: match?.local?._id || '',
       teamAway: match?.away?._id || '',
       round: roundId,
@@ -60,7 +60,7 @@ const ModalMatches = ({ match, modalShow, handleClose, sportId, leagueId, season
                 <Modal.Body>
                 <Form.Group>
                         <Form.Label>Date :</Form.Label>
-                        <FormControl {...formik.getFieldProps('date')} type="date" id="date" name="date"></FormControl>
+                        <FormControl {...formik.getFieldProps('date')} type="datetime-local" id="date" name="date"></FormControl>
                         </Form.Group>
                         <Form.Group>
                         <Form.Label>Local team</Form.Label>
