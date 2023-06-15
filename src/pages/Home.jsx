@@ -4,6 +4,7 @@ import { getMatches } from '../models/matches.models'
 import { toast } from 'react-hot-toast'
 import { Alert, Container, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import formatedDate from '../utils/formatedDate'
 
 const Home = () => {
   const [matches, setMatches] = useState([])
@@ -15,11 +16,7 @@ const Home = () => {
       .finally()
   }, [])
 
-  const year = new Date().getFullYear()
-  const month = new Date().getMonth()
-  const day = new Date().getDate()
-  const date = `${year}-0${month + 1}-${day}`
-
+  const date = formatedDate()
   const matchesToday = matches?.filter(match => match?.date?.split('T')[0] === date)
 
   return (
