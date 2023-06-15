@@ -1,16 +1,22 @@
 import React from 'react'
-import { Image } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import avatar from '../../../assets/team.png'
 
 const SectionTeam = ({ team }) => {
   return (
         <>
-        <div className="mb-4">
-            <h2 className="h2">{team?.name}</h2><div>
-            <Image src={team?.poster} alt={team?.name} />
-            </div>
-            <span><strong>Stadium: </strong> {team?.stadium} </span>
-            <span><strong>Sport :</strong>  {team?.sport?.sport} </span>
-         </div>
+      <Card className=" bg-dark text-white text-center">
+      <center><Card.Img variant="top" style={{ width: '100px', height: '100px' }} src={team?.poster || avatar } /></center>
+      <Card.Body>
+        <Card.Title>{team?.name}</Card.Title>
+        <Card.Text>
+          <span><strong>Stadium:</strong> {team?.stadium} </span>
+          <span><strong>Sport: </strong> {team?.sport?.sport}</span>
+        </Card.Text>
+
+      </Card.Body>
+
+    </Card>
         </>
   )
 }

@@ -14,7 +14,12 @@ const Home = () => {
       .catch(() => toast.error('Failed to load matches'))
       .finally()
   }, [])
-  const date = new Date().toJSON().split('T')[0]
+
+  const year = new Date().getFullYear()
+  const month = new Date().getMonth()
+  const day = new Date().getDate()
+  const date = `${year}-0${month + 1}-${day}`
+
   const matchesToday = matches?.filter(match => match?.date?.split('T')[0] === date)
 
   return (

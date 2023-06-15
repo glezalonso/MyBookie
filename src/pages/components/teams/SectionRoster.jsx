@@ -14,9 +14,9 @@ const SectionRoster = ({ team, setLoading }) => {
 
   return (
         <>
-         <Col className="bg-dark text-light mt-1 border border-secondary" >
+         <Col className="section-col" >
             <h4 className="h4">Roster</h4>
-            <Table responsive variant="dark" striped>
+            <Table responsive variant="dark m-1 mb-3" striped>
                 <thead>
                     <tr>
                     <th>Player</th>
