@@ -11,8 +11,8 @@ export const verifyLogin = (values) => {
 const validateUser = (err = {}, values) => {
   if (!values.username) {
     err.username = toast.error('Username is required')
-  } else if (values.username.length < 5) {
-    err.username = toast.error('Username must contain at least 8 characters')
+  } else if (values.username.length < 4) {
+    err.username = toast.error('Username must contain at least 4 characters')
   } else if (values.username.includes(' ')) {
     err.username = toast.error('Username must not include spaces')
   }
