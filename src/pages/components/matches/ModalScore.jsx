@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast'
-import { closeMatch } from '../../../models/matches.models'
+import { closeMatch } from '../../../services/matches'
 
 const ModalScore = ({ modalShow, handleClose, matchId, setLoading }) => {
   const formik = useFormik({

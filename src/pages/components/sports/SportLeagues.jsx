@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getLeagues } from '../../../models/leagues.models'
+import { getLeagues } from '../../../services/leagues'
 import TableLeagues from '../leagues/TableLeagues'
 import toast, { Toaster } from 'react-hot-toast'
 import { Container } from 'react-bootstrap'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getSeasons } from '../../../models/seasons.models'
+import { getSeasons } from '../../../services/seasons'
 import toast, { Toaster } from 'react-hot-toast'
 import { Container } from 'react-bootstrap'
 import TableSeasons from '../seasons/TableSeasons'

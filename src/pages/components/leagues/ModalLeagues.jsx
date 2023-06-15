@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
-import { getSports } from '../../../models/sport.models'
+import { getSports } from '../../../services/sports'
 import { convertToBase64 } from '../../../helpers/converters'
 import toast from 'react-hot-toast'
 import { validateLeague } from '../../../helpers/validations'

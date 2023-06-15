@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Row, Button, Alert, Table } from 'react-bootstrap'
-import { addLineUp, removeLineUp } from '../../../models/matches.models'
+import { addLineUp, removeLineUp } from '../../../services/matches'
 import toast, { Toaster } from 'react-hot-toast'
 import MatchSettings from './MatchSettings'
 import ModalScore from './ModalScore'

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getMatch } from '../models/matches.models'
+import { getMatch } from '../services/matches'
 import toast, { Toaster } from 'react-hot-toast'
 import { Spinner, Container } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'

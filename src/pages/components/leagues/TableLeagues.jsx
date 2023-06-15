@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert } from 'react-bootstrap'
 import toast from 'react-hot-toast'
-import { deleteLeague, createLeague, updateLeague } from '../../../models/leagues.models'
+import { deleteLeague, createLeague, updateLeague } from '../../../services/leagues'
 import ModalLeagues from './ModalLeagues'
 import ModalDelete from '../static/ModalDelete'
 

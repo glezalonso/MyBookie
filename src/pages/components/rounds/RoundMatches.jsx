@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { Container } from 'react-bootstrap'
-import { getMatches } from '../../../models/matches.models'
+import { getMatches } from '../../../services/matches'
 import TableMatches from '../matches/TableMatches'
 
 const RoundMatches = ({ sportId, leagueId, seasonId, roundId, setLoading }) => {

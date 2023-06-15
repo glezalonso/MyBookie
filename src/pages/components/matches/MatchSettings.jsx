@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col } from 'react-bootstrap'
-import { getTeams } from '../../../models/teams.models'
+import { getTeams } from '../../../services/teams'
 import { toast } from 'react-hot-toast'
 import TeamSettings from './TeamSettings'
 import Roaster from './Roaster'

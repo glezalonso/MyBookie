@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navigate from './components/static/Navigate'
-import { getMatches } from '../models/matches.models'
+import { getMatches } from '../services/matches'
 import { toast } from 'react-hot-toast'
 import { Alert, Container, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'

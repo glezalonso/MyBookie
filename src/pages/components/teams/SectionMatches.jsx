@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
-import { getMatches } from '../../../models/matches.models'
+import { getMatches } from '../../../services/matches'
 import { toast } from 'react-hot-toast'
 import { Table, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'

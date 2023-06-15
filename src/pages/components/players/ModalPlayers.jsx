@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
-import { getSports } from '../../../models/sport.models'
+import { getSports } from '../../../services/sports'
 import { useFormik } from 'formik'
 import { convertToBase64 } from '../../../helpers/converters'
 import { toast } from 'react-hot-toast'

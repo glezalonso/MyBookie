@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Alert, Button, Table } from 'react-bootstrap'
-import { removePlayer } from '../../../models/teams.models'
+import { removePlayer } from '../../../services/teams'
 import toast from 'react-hot-toast'
 
 const SectionRoster = ({ team, setLoading }) => {

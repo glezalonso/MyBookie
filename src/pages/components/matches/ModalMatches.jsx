@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
-import { getTeams } from '../../../models/teams.models'
+import { getTeams } from '../../../services/teams'
 import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast'
 import { validateMatch } from '../../../helpers/validations'

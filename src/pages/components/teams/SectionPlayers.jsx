@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { getPlayers } from '../../../models/players.models'
-import { addPlayer } from '../../../models/teams.models'
+import { getPlayers } from '../../../services/players'
+import { addPlayer } from '../../../services/teams'
 import toast from 'react-hot-toast'
 import { Col, Button, Table, Alert } from 'react-bootstrap'
 

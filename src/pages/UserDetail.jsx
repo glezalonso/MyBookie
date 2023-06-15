@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getUser } from '../models/users.models'
+import { getUser } from '../services/users'
 import { toast, Toaster } from 'react-hot-toast'
 import { Spinner } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getRound } from '../models/round.models'
-
+import { getRound } from '../services/rounds'
 import toast, { Toaster } from 'react-hot-toast'
 import { Spinner, Container } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'

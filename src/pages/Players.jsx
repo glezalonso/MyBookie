@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Spinner } from 'react-bootstrap'
 import toast, { Toaster } from 'react-hot-toast'
-import { getPlayers } from '../models/players.models'
+import { getPlayers } from '../services/players'
 import TablePlayers from './components/players/TablePlayers'
 import Navigate from './components/static/Navigate'
 

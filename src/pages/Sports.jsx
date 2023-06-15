@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-
 import toast, { Toaster } from 'react-hot-toast'
 import { Spinner, Container } from 'react-bootstrap'
-import { getSports } from '../models/sport.models'
+import { getSports } from '../services/sports'
 import Navigate from './components/static/Navigate'
 import TableSports from './components/sports/TableSports'
 

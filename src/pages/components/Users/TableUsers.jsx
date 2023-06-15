@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, Spinner } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
-import { deleteUser, register, updateUser } from '../../../models/users.models'
+import { deleteUser, register, updateUser } from '../../../services/users'
 import ModalUsers from './ModalUsers'
 import ModalDelete from '../static/ModalDelete'
 

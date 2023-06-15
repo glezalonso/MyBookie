@@ -4,7 +4,7 @@ import { Table, Button, FormControl, Alert } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
 import ModalTeams from './ModalTeams'
 import ModalDelete from '../static/ModalDelete'
-import { deleteTeam, updateTeam, createTeam } from '../../../models/teams.models'
+import { deleteTeam, updateTeam, createTeam } from '../../../services/teams'
 
 const TableTeams = ({ teams, setLoading }) => {
   const [modalShow, setModalShow] = useState(false)

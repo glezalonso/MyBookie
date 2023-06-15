@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Table, Alert } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
-import { deleteSeason, createSeason, updateSeason } from '../../../models/seasons.models'
+import { deleteSeason, createSeason, updateSeason } from '../../../services/seasons'
 import ModalSeasons from './ModalSeasons'
 import ModalDelete from '../static/ModalDelete'
 

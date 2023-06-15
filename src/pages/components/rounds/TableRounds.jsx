@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Table, Alert } from 'react-bootstrap'
-import { deleteRound, updateRound, createRound } from '../../../models/round.models'
+import { deleteRound, updateRound, createRound } from '../../../services/rounds'
 import toast from 'react-hot-toast'
 import ModalRounds from './ModalRounds'
 import ModalDelete from '../static/ModalDelete'

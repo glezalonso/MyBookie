@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getUsers } from '../models/users.models'
+import { getUsers } from '../services/users'
 import { toast, Toaster } from 'react-hot-toast'
 import { Spinner, Container } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getRounds } from '../../../models/round.models'
+import { getRounds } from '../../../services/rounds'
 import { toast, Toaster } from 'react-hot-toast'
 import { Container } from 'react-bootstrap'
 import TableRounds from '../rounds/TableRounds'

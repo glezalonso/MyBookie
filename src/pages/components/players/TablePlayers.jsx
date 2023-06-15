@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, FormControl } from 'react-bootstrap'
-import { deletePlayer, updatePlayer, createPlayer } from '../../../models/players.models'
+import { deletePlayer, updatePlayer, createPlayer } from '../../../services/players'
 import ModalPlayers from './ModalPlayers'
 import ModalDelete from '../static/ModalDelete'
 import toast from 'react-hot-toast'

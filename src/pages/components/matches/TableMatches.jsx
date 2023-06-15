@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert } from 'react-bootstrap'
-import { deleteMatch, updateMatch, createMatch } from '../../../models/matches.models'
+import { deleteMatch, updateMatch, createMatch } from '../../../services/matches'
 import { toast } from 'react-hot-toast'
 import ModalMatches from './ModalMatches'
 import ModalDelete from '../static/ModalDelete'
