@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { login } from '../services/users'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/auth'
-import { Container, Form, Button } from 'react-bootstrap'
+import { Container, Form, Button, Alert } from 'react-bootstrap'
 
 const Login = () => {
   const auth = useAuthStore(state => state.setToken)
@@ -58,6 +58,7 @@ const Login = () => {
             <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" />
             </Form.Group>
             <Button variant="warning w-100 mt-3" type='submit'>Log in</Button>
+            <Alert variant='info mt-2'><p>Versión prueba administador : username: admin, password: 12345678 </p> </Alert>
             </Form>
         </Container>
        </>
