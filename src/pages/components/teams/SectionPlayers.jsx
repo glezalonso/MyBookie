@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getPlayers } from '../../../services/players'
 import { addPlayer } from '../../../services/teams'
 import toast from 'react-hot-toast'
-import { Col, Button, Table, Alert } from 'react-bootstrap'
+import { Button, Table, Alert } from 'react-bootstrap'
 
 const SectionPlayers = ({ team, setLoading }) => {
   const [players, setPlayers] = useState([])
@@ -26,9 +26,8 @@ const SectionPlayers = ({ team, setLoading }) => {
 
   return (
         <>
-        <Col className="section-col">
             <h1 className="h4 static">All players</h1>
-            <Table responsive variant="dark m-1" striped>
+            <Table responsive variant="dark" hover striped>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -43,7 +42,6 @@ const SectionPlayers = ({ team, setLoading }) => {
               : <tr><td><Alert variant="info">There is no information to show!</Alert></td></tr>}
             </tbody>
            </Table>
-        </Col >
         </>
   )
 }

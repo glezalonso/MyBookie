@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { login } from '../services/users'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/auth'
-import { Container, Form, Button, Alert } from 'react-bootstrap'
+import { Container, Form, Button } from 'react-bootstrap'
 
 const Login = () => {
   const auth = useAuthStore(state => state.setToken)
@@ -46,19 +46,20 @@ const Login = () => {
   return (
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container className=" bg-dark ml-5 mt-5 p-5 rounded w-75 " >
-            <h1><center><strong>Mi Bookie</strong></center></h1>
-            <Form onSubmit={formik.handleSubmit}>
+       <Container className="mt-5 w-50 h-50 bg-dark text-light rounded p-4" >
+       <p className='alert alert-info mx-5 text-center'>Versión: username: admin, password: 12345678</p>
+            <h1 className='text-center'>Mi Bookie</h1>
+            <Form className=" m-1 w-100" onSubmit={formik.handleSubmit}>
             <Form.Group>
-            <Form.Label htmlFor="username">User</Form.Label>
-            <Form.Control {...formik.getFieldProps('username')} type="text" name="username" id="username" />
+            <Form.Label className='mt-1' htmlFor="username">User</Form.Label>
+            <Form.Control {...formik.getFieldProps('username')} type="text" name="username" id="username" placeholder='Username'/>
             </Form.Group>
             <Form.Group>
-            <Form.Label htmlFor="password" >Password</Form.Label>
-            <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" />
+            <Form.Label className='mt-1' htmlFor="password" >Password</Form.Label>
+            <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" placeholder='Password' />
             </Form.Group>
-            <Button variant="warning w-100 mt-3" type='submit'>Log in</Button>
-            <Alert variant='info mt-2'><p>Versión prueba administador : username: admin, password: 12345678 </p> </Alert>
+            <Button variant="warning mt-2 float-right" type='submit'>Log in</Button>
+
             </Form>
         </Container>
        </>

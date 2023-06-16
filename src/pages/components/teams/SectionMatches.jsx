@@ -21,7 +21,7 @@ const SectionMatches = ({ teamId, setLoading }) => {
   return (
         <>
         <h4>Matches</h4>
-            <Table responsive variant="dark" striped border={'1'}>
+            <Table responsive variant="dark" hover striped >
             <thead>
                 <tr>
                     <th>Date</th>

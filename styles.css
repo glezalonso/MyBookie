@@ -1,11 +1,32 @@
 #body {
-    background: rgb(0, 0, 0);
+    background:black;
     color: white;
- 
 }
 
-.section-col {
-    overflow: hidden;
-    overflow-y: scroll;
-    max-height: 500px;
+.navbar-dark {
+    background-color: black;
+    color: white;
 }
+ .table {
+    margin-top: 10px;
+    padding: 5px;
+   
+ }
+ .col {
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 25px;
+    max-height: 500px;
+    overflow-y: auto;
+  
+    
+ }
+ .row {
+    
+    margin: 15px;
+    padding: 5px;
+    background-color: rgb(10, 10, 10);
+    border-radius: 25px;
+ }

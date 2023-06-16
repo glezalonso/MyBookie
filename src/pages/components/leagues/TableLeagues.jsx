@@ -44,7 +44,7 @@ const TableLeagues = ({ leagues, sportId, setLoading }) => {
           : <ModalLeagues league={league} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateLeague} type={'Edit'} setUpdate={setUpdate} /> }
 
         {(leagues.length > 0)
-          ? <Table responsive variant="dark" striped>
+          ? <Table responsive variant="dark" hover striped>
         <thead>
             <tr>
                 <th>League</th>

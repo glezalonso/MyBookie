@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getUsers } from '../services/users'
 import { toast, Toaster } from 'react-hot-toast'
-import { Spinner, Container } from 'react-bootstrap'
+import { Spinner, Container, Row, Col } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'
 import TableUsers from './components/Users/TableUsers'
 
@@ -22,9 +22,12 @@ const Users = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid className="bg-dark text-white mt-1">
-            <h2 className="h2">Users</h2>
-             <TableUsers users={users} />
+        <Container className='w-100 mt-3'>
+            <Row>
+              <Col>
+                <TableUsers users={users} />
+              </Col>
+            </Row>
         </Container>
         </>
   )

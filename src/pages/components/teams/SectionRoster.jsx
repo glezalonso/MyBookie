@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Alert, Button, Table } from 'react-bootstrap'
+import { Alert, Button, Table } from 'react-bootstrap'
 import { removePlayer } from '../../../services/teams'
 import toast from 'react-hot-toast'
 
@@ -14,9 +14,8 @@ const SectionRoster = ({ team, setLoading }) => {
 
   return (
         <>
-         <Col className="section-col" >
             <h4 className="h4">Roster</h4>
-            <Table responsive variant="dark m-1 mb-3" striped>
+            <Table responsive variant="dark" hover striped>
                 <thead>
                     <tr>
                     <th>Player</th>
@@ -33,7 +32,6 @@ const SectionRoster = ({ team, setLoading }) => {
 
              </tbody>
              </Table>
-            </Col>
         </>
   )
 }

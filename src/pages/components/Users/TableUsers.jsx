@@ -33,12 +33,13 @@ const TableUsers = ({ users }) => {
 
   return (
         <>
+        <h3 className="h3 mt-2">Users</h3>
          <Button className="btn btn-warning mb-2" onClick={handleShow}> Create user</Button>
         {(!update)
           ? <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={register} type={'Create'} setUpdate={setUpdate} />
           : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Edit'} setUpdate={setUpdate} /> }
         {(users.length > 0)
-          ? <Table responsive variant="dark" striped>
+          ? <Table responsive variant="dark" hover striped>
         <thead >
             <tr>
                 <th>Username</th>

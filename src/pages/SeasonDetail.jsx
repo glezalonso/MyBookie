@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getSeason } from '../services/seasons'
 import toast, { Toaster } from 'react-hot-toast'
-import { Spinner, Container } from 'react-bootstrap'
+import { Spinner, Container, Row, Col } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'
 
 import SeasonRounds from './components/seasons/SeasonRounds'
@@ -25,9 +25,14 @@ const SeasonDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid className="bg-dark text-white mt-1">
+        <Container className='w-100 mt-3'>
         <h1 className="h1"><strong>{season?.league?.league} </strong>{season?.season}</h1>
-            <SeasonRounds seasonId={seasonId} sportId={sportId} leagueId={leagueId} roundId={roundId} setLoading={setLoading} />
+          <Row>
+              <Col>
+                 <SeasonRounds seasonId={seasonId} sportId={sportId} leagueId={leagueId} roundId={roundId} setLoading={setLoading} />
+              </Col>
+          </Row>
+
          </Container>
         </>
   )

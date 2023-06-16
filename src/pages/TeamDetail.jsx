@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getTeam } from '../services/teams'
 import toast, { Toaster } from 'react-hot-toast'
-import { Container, Spinner, Row } from 'react-bootstrap'
+import { Container, Spinner, Row, Col } from 'react-bootstrap'
 import Navigate from './components/static/Navigate'
 import SectionTeam from './components/teams/SectionTeam'
 import SectionRoster from './components/teams/SectionRoster'
@@ -27,13 +27,25 @@ const TeamDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid className="bg-dark text-white mt-1">
-            <SectionTeam team={team} />
-            <SectionMatches teamId={teamId} setLoading={setLoading}/>
-                <Row>
-                    <SectionRoster team={team} setLoading={setLoading}/>
-                    <SectionPlayers team={team} setLoading={setLoading} />
-                </Row>
+        <Container className='w-100 mt-3'>
+          <Row>
+            <Col>
+             <SectionTeam team={team} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <SectionMatches teamId={teamId} setLoading={setLoading}/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <SectionRoster team={team} setLoading={setLoading}/>
+            </Col>
+            <Col>
+              <SectionPlayers team={team} setLoading={setLoading} />
+            </Col>
+          </Row>
         </Container>
         </>
   )

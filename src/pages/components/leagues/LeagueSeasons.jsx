@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getSeasons } from '../../../services/seasons'
 import toast, { Toaster } from 'react-hot-toast'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import TableSeasons from '../seasons/TableSeasons'
 
 const LeagueSeasons = ({ leagueId, sportId, setLoading }) => {
@@ -17,8 +17,13 @@ const LeagueSeasons = ({ leagueId, sportId, setLoading }) => {
   return (
         <>
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid className="bg-dark text-white mt-1">
-            <TableSeasons seasons={seasons} leagueId={leagueId} sportId={sportId} setLoading={setLoading} />
+        <Container className='w-100 mt-3'>
+          <Row>
+              <Col>
+              <TableSeasons seasons={seasons} leagueId={leagueId} sportId={sportId} setLoading={setLoading} />
+              </Col>
+          </Row>
+
         </Container>
         </>
   )

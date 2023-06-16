@@ -13,9 +13,7 @@ const SectionTeam = ({ team }) => {
           <span><strong>Stadium:</strong> {team?.stadium} </span>
           <span><strong>Sport: </strong> {team?.sport?.sport}</span>
         </Card.Text>
-
       </Card.Body>
-
     </Card>
         </>
   )

@@ -41,9 +41,8 @@ const TableSeasons = ({ seasons, leagueId, sportId, setLoading }) => {
   const seasonsBySport = seasons?.filter(season => season?.league?._id === leagueId)
   return (
         <>
+                 <h3 className="h3 mt-2" ><strong>History seasons </strong></h3>
                  <Button variant="warning mb-2" onClick={handleShow}>Create season</Button>
-                 <h1 className="h5 mt-2" ><strong>History seasons </strong></h1>
-
                 {(!update)
                   ? <ModalSeasons season={season} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createSeason} type={'Create'} setUpdate={setUpdate} leagueId={leagueId} />
                   : <ModalSeasons season={season} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateSeason} type={'Edit'} setUpdate={setUpdate} leagueId={leagueId} /> }

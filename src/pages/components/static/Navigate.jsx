@@ -15,7 +15,7 @@ const Navigate = () => {
 
   return (
         <>
-          <div className="navbar navbar-expand-sm bg-dark navbar-dark">
+          <div className="navbar navbar-expand-sm navbar-dark">
             <div className="container-fluid">
             <span className="navbar-brand">My Bookie</span>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">

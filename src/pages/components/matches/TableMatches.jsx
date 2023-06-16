@@ -38,12 +38,13 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
 
   return (
         <>
+        <h3 className="h3 mt-2">Matches</h3>
         <Button className="btn btn-warning mb-2" onClick={handleShow} >Create match</Button>
          {(!update)
            ? <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/>
            : <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/> }
          {(matches.length > 0)
-           ? <Table responsive variant="dark" striped>
+           ? <Table responsive variant="dark" hover striped>
         <thead>
             <tr>
                 <th>Date</th>

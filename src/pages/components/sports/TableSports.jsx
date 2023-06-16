@@ -40,7 +40,7 @@ const TableSports = ({ sports, setLoading }) => {
           ? <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createSport} type={'Create'} setUpdate={setUpdate} />
           : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateSport} type={'Edit'} setUpdate={setUpdate} /> }
         {(sports.length > 0)
-          ? <Table responsive variant="dark" striped>
+          ? <Table responsive variant="dark" hover striped>
         <thead>
             <tr>
                 <th>Sport</th>

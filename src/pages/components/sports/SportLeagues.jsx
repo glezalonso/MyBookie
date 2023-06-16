@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getLeagues } from '../../../services/leagues'
 import TableLeagues from '../leagues/TableLeagues'
 import toast, { Toaster } from 'react-hot-toast'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const SportLeagues = ({ sportId, setLoading }) => {
   const [leagues, setLeagues] = useState([])
@@ -17,9 +17,13 @@ const SportLeagues = ({ sportId, setLoading }) => {
   return (
         <>
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid className="bg-dark text-white mt-1">
-           <h1 className="h1">Leagues</h1>
+        <Container className='w-100 mt-3'>
+          <Row>
+            <Col>
+            <h3 className="h3">Leagues</h3>
             <TableLeagues leagues={leagues} sportId={sportId} setLoading={setLoading} />
+            </Col>
+          </Row>
        </Container>
         </>
   )

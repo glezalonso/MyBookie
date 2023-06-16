@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Spinner } from 'react-bootstrap'
+import { Container, Spinner, Row, Col } from 'react-bootstrap'
 import toast, { Toaster } from 'react-hot-toast'
 import { getPlayers } from '../services/players'
 import TablePlayers from './components/players/TablePlayers'
@@ -23,9 +23,13 @@ const Players = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container fluid className="bg-dark text-white mt-1">
-            <h1 className="h1">Players</h1>
+        <Container className='w-100 mt-3'>
+          <Row>
+            <Col>
+            <h3 className="h3 p-2">Players</h3>
             <TablePlayers players={players} setLoading={setLoading}/>
+            </Col>
+            </Row>
         </Container>
         </>
   )
