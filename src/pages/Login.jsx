@@ -3,7 +3,7 @@ import { verifyLogin } from '../helpers/validations'
 import { Toaster, toast } from 'react-hot-toast'
 import { useFormik } from 'formik'
 import { login } from '../services/users'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '../store/auth'
 import { Container, Form, Button } from 'react-bootstrap'
 
@@ -32,9 +32,8 @@ const Login = () => {
           }, 5000
           )
         })
-        .catch(err => {
+        .catch(() => {
           toast.error('Could not log in!')
-          console.log(err)
           setTimeout(() => {
             formik.resetForm()
           }, 3000
@@ -57,6 +56,9 @@ const Login = () => {
             <Form.Group>
             <Form.Label className='mt-1' htmlFor="password" >Password</Form.Label>
             <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" placeholder='Password' />
+            </Form.Group>
+            <Form.Group>
+            <Form.Label className='mt-1' ><Link to={'recovery'}>Forget your password?</Link></Form.Label>
             </Form.Group>
             <Button variant="warning mt-2 float-right" type='submit'>Log in</Button>
 

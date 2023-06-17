@@ -7,7 +7,9 @@ import Protected from './Authorization/Protected'
 
 // Unprotected Routes
 import Login from './pages/Login'
-import Recovery from './pages/Recovery'
+import GenerateOTP from './pages/components/recovery/GenerateOTP'
+import VerifyOTP from './pages/components/recovery/VeryfyOPT'
+import ResetPassword from './pages/components/recovery/ResetPassword'
 import _404 from './pages/_404'
 
 // Protected Routes
@@ -37,7 +39,9 @@ const App = () => {
      <Routes>
       <Route element={<Unprotected isLogged={isLogged}></Unprotected>}>
       <Route path="/" element={<Login />} />
-      <Route path="recovery" element={<Recovery />} />
+      <Route path="recovery" element={<GenerateOTP/>} />
+      <Route path="recovery/verifyOTP/:email" element={<VerifyOTP/>} />
+      <Route path="recovery/verifyOTP/:email/resetPasword/:OTP" element={<ResetPassword/>} />
       <Route path="*" element={<_404 />} />
       </Route>
 

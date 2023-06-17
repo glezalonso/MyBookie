@@ -3,7 +3,7 @@ import { Modal, Form, Button } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast'
 
-const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) => {
+const ModalUsers = ({ user, modalShow, handleClose, setLoading, action, type, setUpdate }) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -17,10 +17,12 @@ const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) =
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values) => {
+      setLoading(true)
       action((!user?._id) ? values : user?._id, values)
         .then(() => toast.success('It has been a success'))
         .catch(() => toast.error('An error has occurred'))
         .finally(() => {
+          setLoading(false)
           formik.resetForm()
           handleClose()
         })

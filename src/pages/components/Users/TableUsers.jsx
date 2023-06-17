@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Button, Alert, Spinner } from 'react-bootstrap'
+import { Table, Button, Alert } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
 import { deleteUser, register, updateUser } from '../../../services/users'
 import ModalUsers from './ModalUsers'
 import ModalDelete from '../static/ModalDelete'
 
-const TableUsers = ({ users }) => {
+const TableUsers = ({ users, setLoading }) => {
   const [modalShow, setModalShow] = useState(false)
-  const [loading, setLoading] = useState(false)
   const [user, setUser] = useState([])
   const [update, setUpdate] = useState(false)
   const [modalDelete, setModalDelete] = useState({ state: false, id: '' })
@@ -19,25 +18,25 @@ const TableUsers = ({ users }) => {
   const handleShowDelete = (id) => setModalDelete({ state: true, id })
 
   const handleDelete = (id) => {
+    setLoading(true)
     deleteUser(id)
       .then(() => toast.success('Deleted sport successfully'))
       .catch(() => toast.error('Failed sport delete'))
-      .finally(() => setLoading(true))
+      .finally(() => setLoading(false))
   }
   const handleUpdate = (data) => {
     handleShow()
     setUser(data)
     setUpdate(true)
   }
-  if (loading) return <Spinner animation="border" />
 
   return (
         <>
         <h3 className="h3 mt-2">Users</h3>
          <Button className="btn btn-warning mb-2" onClick={handleShow}> Create user</Button>
         {(!update)
-          ? <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={register} type={'Create'} setUpdate={setUpdate} />
-          : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalUsers user={user} modalShow={modalShow} setLoading={setLoading} handleClose={handleClose} action={register} type={'Create'} setUpdate={setUpdate} />
+          : <ModalUsers user={user} modalShow={modalShow} setLoading={setLoading} handleClose={handleClose} action={updateUser} type={'Edit'} setUpdate={setUpdate} /> }
         {(users.length > 0)
           ? <Table responsive variant="dark" hover striped>
         <thead >

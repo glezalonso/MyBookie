@@ -25,7 +25,7 @@ const Users = () => {
         <Container className='w-100 mt-3'>
             <Row>
               <Col>
-                <TableUsers users={users} />
+                <TableUsers users={users} setLoading={setLoading} />
               </Col>
             </Row>
         </Container>

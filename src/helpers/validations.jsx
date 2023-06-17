@@ -71,3 +71,22 @@ export const validateLeague = (values) => {
   if (!values.league) return toast.error('League is required')
   if (!values.sport) return toast.error('the league must belong to a sport')
 }
+
+export const validateEmail = (values) => {
+  if (!values.email) return toast.error('Email is required')
+}
+
+export const validateOTP = (values) => {
+  if (!values.OTP) return toast.error('OTP is required')
+  if (values.OTP.length !== 6) return toast.error('OTP must have 6 characters')
+}
+
+export const validateResetPassword = (values) => {
+  if (!values.password) return toast.error('Password is required')
+  if (!values.confirmPassword) return toast.error('Password is required')
+  if (values.password.lenght > 8) return toast.error('Password must contain at least 8 characters')
+  if (values.confirmPassword > 8) return toast.error('Password must contain at least 8 characters')
+  if (values.password.lenght.includes(' ')) return toast.error('Password must not include spaces')
+  if (values.confirmPassword.lenght.includes(' '))toast.error('Password must not include spaces')
+  if (values.password === values.confirmPassword) toast.error('Passwods must be equals')
+}

@@ -2,6 +2,12 @@ import axios from '../libs/axios'
 
 export const login = (values) => axios.post('/api/login', values)
 
+export const generateOTP = (values) => axios.post('/api/generateOTP', values)
+
+export const verifyOTP = (values) => axios.post('/api/verifyOTP', values)
+
+export const resetPassword = (values) => axios.put('/api/resetPassword', values)
+
 export const register = (values) => axios.post('/api/users/register', values)
 
 export const getUsers = () => axios.get('/api/users')
