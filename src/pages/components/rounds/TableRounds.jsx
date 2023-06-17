@@ -42,7 +42,7 @@ const TableRounds = ({ rounds, sportId, leagueId, seasonId, setLoading }) => {
          {(!update)
            ? <ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createRound} type={'Create'} setUpdate={setUpdate} seasonId={seasonId} />
            : <ModalRounds round={round} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateRound} type={'Edit'} setUpdate={setUpdate} seasonId={seasonId} /> }
-       {(rounds.length > 0)
+       {(roundsBySeason?.length > 0)
          ? <Table responsive variant="dark" hover striped>
             <thead>
                 <tr>

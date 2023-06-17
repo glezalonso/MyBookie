@@ -46,7 +46,7 @@ const TableSeasons = ({ seasons, leagueId, sportId, setLoading }) => {
                 {(!update)
                   ? <ModalSeasons season={season} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createSeason} type={'Create'} setUpdate={setUpdate} leagueId={leagueId} />
                   : <ModalSeasons season={season} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateSeason} type={'Edit'} setUpdate={setUpdate} leagueId={leagueId} /> }
-            { (seasons.length > 0)
+            { (seasonsBySport?.length > 0)
               ? <Table responsive variant="dark" striped>
                 <thead>
                     <tr>

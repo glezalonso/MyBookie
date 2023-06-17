@@ -43,7 +43,7 @@ const TableMatches = ({ matches, sportId, leagueId, seasonId, roundId, setLoadin
          {(!update)
            ? <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={createMatch} type={'Create'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/>
            : <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} setLoading={setLoading} action={updateMatch} type={'Edit'} setUpdate={setUpdate} sportId={sportId} roundId={roundId} leagueId={leagueId} seasonId={seasonId}/> }
-         {(matches.length > 0)
+         {(matchesByRound?.length > 0)
            ? <Table responsive variant="dark" hover striped>
         <thead>
             <tr>
