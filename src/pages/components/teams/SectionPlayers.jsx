@@ -41,7 +41,7 @@ const SectionPlayers = ({ team, setLoading }) => {
         <>
             <h1 className="h4 static">All players</h1>
             <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
-            <Table responsive variant="dark" hover striped>
+            <Table responsive variant="dark mt-3" hover striped>
                 <thead>
                     <tr>
                         <th>Player</th>
