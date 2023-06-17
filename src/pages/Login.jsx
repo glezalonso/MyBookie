@@ -45,8 +45,8 @@ const Login = () => {
   return (
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container className="mt-5 w-50 h-50 bg-dark text-light rounded p-4" >
-       <p className='alert alert-info mx-5 text-center'>Versión: username: admin, password: 12345678</p>
+       <Container className="mt-5  bg-dark text-light rounded p-4" >
+       <p className='alert alert-info  text-center'>Versión: username: admin, password: 12345678</p>
             <h1 className='text-center'>Mi Bookie</h1>
             <Form className=" m-1 w-100" onSubmit={formik.handleSubmit}>
             <Form.Group>
