@@ -9,17 +9,20 @@
 }
 
  .col {
-    padding: 5px;
-    margin-top: 10px;
-    border-radius: 25px;
+   
     max-height: 700px;
     overflow-y: auto;
-  
-    
+ 
  }
  .row { 
     margin: 10px;
-    padding: 5px;
+    padding: 1px;
     background-color: rgb(10, 10, 10);
     border-radius: 25px;
+ }
+
+ .table td {
+    position: relative;
+    
+    
  }

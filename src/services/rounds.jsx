@@ -9,7 +9,3 @@ export const createRound = (body) => axios.post('/api/rounds', body)
 export const updateRound = (id, body) => axios.put(`/api/rounds/${id}`, body)
 
 export const deleteRound = (id) => axios.delete(`/api/rounds/${id}`)
-
-export const addMatch = (id, body) => axios.post(`/api/rounds/addmatch/${id}`, body)
-
-export const removeMatch = (id, data) => axios.delete(`/api/rounds/removematch/${id}`, { data })
